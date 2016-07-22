@@ -73,7 +73,7 @@ var SignupComponent = React.createClass({
               </div>
               <div className="form-group">
                 <div className="col-sm-offset-1 col-sm-11">
-                  <button type="submit" className="btn btn-default">Create Account</button>
+                  <button type="submit" className="btn btn-primary">Create Account</button>
                 </div>
               </div>
             </form>

@@ -5,7 +5,6 @@ $icon-font-path: '../../node_modules/bootstrap-sass/assets/fonts/bootstrap/';
 // Import Bootstrap
 @import '../../node_modules/bootstrap-sass/assets/stylesheets/bootstrap';
 
-
 *,
 *::before,
 *::after {
@@ -21,21 +20,30 @@ h1, h2, h3, h4, h5, h6 {
   font-family: Alegreya;
 }
 
+hr {
+  border-top: 1px solid black;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
 .container-fluid {
   padding: 0px;
   position: relative;
+  background-image: url('../images/parchment-background.png');
+  background-size: auto;
+  background-repeat: repeat;
 }
 
 .children-container {
-  min-height: 675px;
+  min-height: 650px;
 }
 
 .login-form-container {
-  margin-top: 100px;
+  margin-top: 60px;
 }
 
 .signup-form-container {
-  margin-top: 100px;
+  margin-top: 60px;
 }
 
 .app-header {
@@ -72,51 +80,120 @@ h1, h2, h3, h4, h5, h6 {
     color: #241D69;
     font-weight: bold;
   }
-  ul{
+  ul {
     float: right;
     line-height: 100px;
-  }
-  .social-media-links {
-    display: inline-block;
-    a {
-      height: 30px;
-      width: 30px;
-      color: white;
-    }
-    i {
-      height: 30px;
-      width: 30px;
-      color: white;
-    }
+    margin-bottom: 0px;
   }
 }
 
-.create-account-button {
+.social-media-links {
+  display: inline-block;
+  a {
+    height: 30px;
+    width: 30px;
+    color: black;
+  }
+  i {
+    height: 30px;
+    width: 30px;
+    color: black;
+  }
+}
+
+.create-account {
   padding-left: 0;
 }
 
-.address-image-input {
-  padding: 0;
+// .address-image-input {
+//   padding: 0;
+// }
+//
+// .user-image {
+//   height: 100px;
+//   width: 100px;
+//   border: 1px solid #BABABA;
+//   color: #BABABA;
+// }
+
+.nav-style {
+  background-color: #09397A;
 }
 
-.user-image {
-  height: 100px;
-  width: 100px;
-  border: 1px solid #BABABA;
-  color: #BABABA;
+.nav-links {
+  color: white;
+  margin-left: 30px;
+  font-size: 24px;
+}
+
+.navbar-default .navbar-nav li a {
+  color: white;
+}
+
+.navbar-default .navbar-nav li a:hover {
+  color: white;
 }
 
 .create-budget-container {
-  margin-top: 100px;
+  margin-top: 60px;
 }
 
-.income-section{
+.table-headings {
+  margin-top: 10px;
+}
+
+.income-section {
   position: relative;
   .income-header{
-    position: absolute;
+    display: inline-block;
+    position: relative;
     font-size: 30px;
     margin: 0;
+    background-color: #09397A;
+    color: white;
   }
+}
+
+.input-header {
+  font-size: 20px;
+}
+
+.expense-section {
+  position: relative;
+  .expense-header{
+    display: inline-block;
+    position: relative;
+    font-size: 30px;
+    margin: 0;
+    background-color: #09397A;
+    color: white;
+  }
+}
+
+.income-form {
+  margin-top: 6px;
+}
+
+.expense-form {
+  margin-top: 6px;
+}
+
+.input-field {
+  line-height: 30px;
+  width: 100%;
+  border-radius: 5px;
+}
+
+.delete-button {
+  width: 36px;
+  height: 36px;
+  margin-left: 20%;
+}
+
+.dollar-sign {
+  position: absolute;
+  left: 2px;
+  top: 8px;
 }
 
 @media(max-width: 750px) {

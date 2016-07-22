@@ -4,7 +4,7 @@ var Backbone = require('backbone');
 var User = Backbone.Model.extend({
   urlRoot: 'https://av-awesome-server.herokuapp.com/classes/_User'
 },{
-  login: function(username, password){
+  login: function(username, password, callbacks){
     var loggedInUser = new User();
     var queryString = jQuery.param({'username': username, 'password': password});
 
@@ -13,7 +13,7 @@ var User = Backbone.Model.extend({
       localStorage.setItem('user', JSON.stringify(loggedInUser.toJSON()));
       callbacks.success(loggedInUser);
     }).fail(function(error){
-      callbacks.error(loggedInUser, error);
+      callbacks.fail(loggedInUser, error);
     });
   }
 });

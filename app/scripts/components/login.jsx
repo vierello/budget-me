@@ -8,20 +8,20 @@ var LoginComponent = React.createClass({
   userLogin: function(e){
     //console.log('test');
       e.preventDefault();
-      var username = $('#username').val();
-      var password = $('#password').val();
+      var username = $('#inputUsername1').val();
+      var password = $('#inputPassword1').val();
       var self = this;
 
-      var loggedInUser = User.login(username, password);
-      localStorage.setItem('username', username)
-
-      loggedInUser.done(function(response){
-        //console.log(username);
-        self.props.router.navigate('main/', {trigger: true})
-
-      }).fail(function(){
-
+      User.login(username, password, {
+        success: function(response){
+        self.props.router.navigate('main/', {trigger: true});
+        console.log(response);
+        },
+        fail: function(response){
+          alert('That username or password does not match our records. Please try again.')
+        }
       });
+      localStorage.setItem('username', username)
   },
 
   render: function(){
@@ -61,14 +61,14 @@ var LoginComponent = React.createClass({
               </div>
               <div className="form-group">
                 <div className="col-sm-offset-1 col-sm-11">
-                  <button type="submit" className="btn btn-default">Sign In</button>
+                  <button type="submit" className="btn btn-primary">Sign In</button>
                 </div>
               </div>
             </form>
-            <div className="col-sm-offset-1 col-sm-11 create-account-button">
+            <div className="col-sm-offset-1 col-sm-11 create-account">
               <div>or</div>
               <br/>
-              <a href="#signup/"><button className="btn btn-default">Create Account</button></a>
+              <a href="#signup/"><button className="btn btn-primary">Create Account</button></a>
             </div>
           </div>
         </div>
@@ -93,9 +93,9 @@ var NavComponent = React.createClass({
           <footer className="col-sm-12 app-footer">
             <span className="created-by">Created by ACJ Engineering, Inc.</span>
             <ul>
-              <li className="social-media-links"><a href="#"><i className="fa fa-facebook-official" aria-hidden="true"></i></a></li>
-              <li className="social-media-links"><a href="#"><i className="fa fa-twitter-square" aria-hidden="true"></i></a></li>
-              <li className="social-media-links"><a href="#"><i className="fa fa-youtube-square" aria-hidden="true"></i></a></li>
+              <li className="social-media-links"><a href="#"><i className="fa fa-facebook-official"></i></a></li>
+              <li className="social-media-links"><a href="#"><i className="fa fa-twitter-square"></i></a></li>
+              <li className="social-media-links"><a href="#"><i className="fa fa-youtube-square"></i></a></li>
             </ul>
           </footer>
         </div>
