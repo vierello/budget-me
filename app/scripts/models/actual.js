@@ -1,6 +1,12 @@
 var Backbone = require('backbone');
 
-var Actual = Backbone.Model.extend({
+var PointerFieldModel = Backbone.Model.extend({
+  setPointer: function(field, obj, className){
+    this.set(field, {'__type': 'Pointer', 'className': className, 'objectId': obj.objectId});
+  }
+});
+
+var Actual = PointerFieldModel.extend({
   idAttribute: "objectId",
   urlRoot: 'https://av-awesome-server.herokuapp.com/classes/actual'
 });

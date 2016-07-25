@@ -28,7 +28,7 @@ var ActualListComponent = React.createClass({
     var actualCollection = this.state.actualCollection;
     //console.log(actualCollection);
     var actual = actualCollection.map(function(actualItem, index){
-      console.log(actualItem.get('type'));
+      //console.log(actualItem.get('type'));
       return (
         <tr key={index} className="actual-list">
           <td>{actualItem.get('createdAt').slice(0, 10)}</td>
@@ -56,6 +56,11 @@ var ActualListComponent = React.createClass({
               {actual}
             </tbody>
           </table>
+        </div>
+        <div className="row">
+          <div className="col-xs-12 col-md-offset-2 col-md-8">
+            <p className="return-home-button"><a href="#main/"><button className="btn btn-warning">Return Home</button></a></p>
+          </div>
         </div>
       </NavComponent>
     )

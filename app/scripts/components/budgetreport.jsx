@@ -88,7 +88,7 @@ var TotalIncomeComponent = React.createClass({
         var income = previousValue + currentValue
         return income
       });
-      console.log(totalIncome);
+      //console.log(totalIncome);
       return(
         <div key={index}>
           ${totalIncome.toFixed(2)}
@@ -121,7 +121,7 @@ var TotalExpenseComponent = React.createClass({
         var expense = previousValue + currentValue
         return expense
       });
-      console.log(totalExpense);
+      //console.log(totalExpense);
       return(
         <div key={index}>
           ${totalExpense.toFixed(2)}

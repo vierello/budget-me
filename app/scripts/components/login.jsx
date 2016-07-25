@@ -14,7 +14,7 @@ var LoginComponent = React.createClass({
       User.login(username, password, {
         success: function(response){
         self.props.router.navigate('main/', {trigger: true});
-        console.log(response);
+        //console.log(response);
         },
         fail: function(response){
           alert('That username or password does not match our records. Please try again.')

@@ -1,7 +1,12 @@
 var Backbone = require('backbone');
 
+var PointerFieldModel = Backbone.Model.extend({
+  setPointer: function(field, obj, className){
+    this.set(field, {'__type': 'Pointer', 'className': className, 'objectId': obj.objectId});
+  }
+});
 
-var Budget = Backbone.Model.extend({
+var Budget = PointerFieldModel.extend({
   idAttribute: 'objectId',
   urlRoot: 'https://av-awesome-server.herokuapp.com/classes/budgets'
 });

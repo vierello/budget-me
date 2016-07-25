@@ -20,7 +20,8 @@ var ActualInputComponent = React.createClass({
 
   handleSubmit: function(e){
     e.preventDefault();
-    var self = this;
+    var user = JSON.parse(localStorage.getItem('user'));
+    this.props.actualExpense.setPointer('user', user, '_User');
     this.props.actualExpense.save();
   },
 
@@ -108,9 +109,9 @@ var MainComponent = React.createClass({
       <NavComponent>
         <NavBarComponent/>
         <div className="row">
-          <div className="col-md-offset-1 col-md-10">
+          <div className="main-page-layout col-md-offset-1 col-md-10">
             <div>
-              Welcome {localStorage.getItem('username')}
+              <h1 className="well main-page-heading">{localStorage.getItem('username')}&#8217;<span className='s'>s</span> Home Page</h1>
             </div>
             <ActualInputComponent actualExpense={this.state.actual}/>
           </div>

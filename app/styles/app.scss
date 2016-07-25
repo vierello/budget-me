@@ -26,6 +26,10 @@ hr {
   margin-bottom: 10px;
 }
 
+.s {
+  text-transform: lowercase;
+}
+
 .container-fluid {
   padding: 0px;
   position: relative;
@@ -55,7 +59,7 @@ hr {
     font-size: 160px;
     margin-top: 0px;
     line-height: 230px;
-    color: #241D69;
+    color: #09397A;
     -webkit-text-stroke-width: 2px;
     -webkit-text-stroke-color: white;
     font-weight: bold;
@@ -77,7 +81,7 @@ hr {
     margin-left: 20px;
     line-height: 100px;
     font-size: 20px;
-    color: #241D69;
+    color: #09397A;
     font-weight: bold;
   }
   ul {
@@ -99,6 +103,19 @@ hr {
     width: 30px;
     color: black;
   }
+}
+
+.main-page-layout {
+  padding: 0;
+}
+
+.main-page-heading {
+  text-align: center;
+  font-size: 60px;
+  color: white;
+  font-weight: bold;
+  text-transform: capitalize;
+  background-color: #09397A;
 }
 
 .actual-title {
@@ -136,6 +153,11 @@ hr {
 
 .actual-list {
   margin-top: 12px;
+}
+
+.return-home-button {
+  text-align: center;
+  margin-top: 20px;
 }
 
 .create-account {

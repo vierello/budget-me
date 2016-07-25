@@ -152,9 +152,11 @@ var CreateBudgetComponent = React.createClass({
     var budget = this.state.budget;
     var income = this.state.income;
     var expense = this.state.expense;
+    var user = JSON.parse(localStorage.getItem('user'));
 
     budget.set('income', income.toJSON());
     budget.set('expense', expense.toJSON());
+    budget.setPointer('user', user, '_User')
     budget.save().done(function(){
       router.navigate('budgetreport/', {trigger: true});
     });
