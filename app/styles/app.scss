@@ -101,6 +101,43 @@ hr {
   }
 }
 
+.actual-title {
+  display: inline-block;
+  position: relative;
+  font-size: 30px;
+  margin: 0;
+  background-color: #09397A;
+  color: white;
+}
+
+.actual-input {
+  padding: 0px;
+  margin-top: 16px;
+}
+
+.actual-expense-input {
+  width: 90%;
+  line-height: 30px;
+  border-radius: 5px;
+}
+
+.actual-expense-box {
+  height: 34px;
+  width: 100%;
+}
+
+.actual-note {
+  margin-top: 10px;
+}
+
+.add-view-buttons {
+  margin-top: 10px;
+}
+
+.actual-list {
+  margin-top: 12px;
+}
+
 .create-account {
   padding-left: 0;
 }
@@ -194,6 +231,15 @@ hr {
   position: absolute;
   left: 2px;
   top: 8px;
+}
+
+.goal-title{
+  display: inline-block;
+  position: relative;
+  font-size: 30px;
+  margin: 0;
+  background-color: #09397A;
+  color: white;
 }
 
 @media(max-width: 750px) {

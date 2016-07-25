@@ -1,5 +1,4 @@
 var React = require('react');
-var $ = require('jquery');
 var Backbone = require('backbone');
 
 var User = require('../models/users').User;
@@ -8,8 +7,8 @@ var LoginComponent = React.createClass({
   userLogin: function(e){
     //console.log('test');
       e.preventDefault();
-      var username = $('#inputUsername1').val();
-      var password = $('#inputPassword1').val();
+      var username = jQuery('#inputUsername1').val();
+      var password = jQuery('#inputPassword1').val();
       var self = this;
 
       User.login(username, password, {

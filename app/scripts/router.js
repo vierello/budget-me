@@ -7,6 +7,8 @@ var SignupComponent = require('./components/signup.jsx').SignupComponent;
 var CreateBudgetComponent = require('./components/createbudget.jsx').CreateBudgetComponent;
 var MainComponent = require('./components/main.jsx').MainComponent;
 var BudgetReportComponent = require('./components/budgetreport.jsx').BudgetReportComponent;
+var CreateGoalComponent = require('./components/creategoal.jsx').CreateGoalComponent;
+var ActualListComponent = require('./components/actuallist.jsx').ActualListComponent;
 
 
 var Router = Backbone.Router.extend({
@@ -17,7 +19,8 @@ var Router = Backbone.Router.extend({
     'main/': 'main',
     'createbudget/': 'createBudget',
     'budgetreport/': 'budgetReport',
-    'creategoal/': 'createGoal'
+    'creategoal/': 'createGoal',
+    'actuallist/': 'actualList'
   },
 
   login: function(){
@@ -54,13 +57,20 @@ var Router = Backbone.Router.extend({
       document.getElementById('container')
     )
   },
-  //
-  // createGoal: function(){
-  //   ReactDOM.render(
-  //     React.createElement(CreateGoalComponent),
-  //     document.getElementById('container')
-  //   )
-  // }
+
+  createGoal: function(){
+    ReactDOM.render(
+      React.createElement(CreateGoalComponent, {router: this}),
+      document.getElementById('container')
+    )
+  },
+
+  actualList: function(){
+    ReactDOM.render(
+      React.createElement(ActualListComponent, {router: this}),
+      document.getElementById('container')
+    )
+  }
 });
 
 var router = new Router();

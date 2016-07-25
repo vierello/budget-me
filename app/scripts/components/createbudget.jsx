@@ -9,7 +9,7 @@ var ExpenseCollection = require('../models/expense').ExpenseCollection;
 
 var IncomeForm = React.createClass({
   handleType: function(e){
-    this.props.incomeItem.set('income-type', e.target.value)
+    this.props.incomeItem.set('type', e.target.value)
   },
 
   handleFrequency: function(e){
@@ -21,7 +21,7 @@ var IncomeForm = React.createClass({
   },
 
   handleAmount: function(e){
-    this.props.incomeItem.set('income-amount', e.target.value)
+    this.props.incomeItem.set('amount', parseFloat(e.target.value))
   },
 
   render: function(){
@@ -58,19 +58,19 @@ var IncomeForm = React.createClass({
 
 var ExpenseForm = React.createClass({
   handleType: function(e){
-    this.props.expenseItem.set('expense-type', e.target.value)
+    this.props.expenseItem.set('type', e.target.value)
   },
 
-  handleFrequency: function(e){
+  handlePayee: function(e){
     this.props.expenseItem.set('payee', e.target.value)
   },
 
-  handleDate: function(e){
-    this.props.expenseItem.set('due-date', e.target.value)
+  handleDueDate: function(e){
+    this.props.expenseItem.set('duedate', e.target.value)
   },
 
   handleAmount: function(e){
-    this.props.expenseItem.set('expense-amount', e.target.value)
+    this.props.expenseItem.set('amount', parseFloat(e.target.value))
   },
 
   render: function(){
@@ -188,7 +188,7 @@ var CreateBudgetComponent = React.createClass({
       <NavComponent>
         <NavBarComponent/>
         <div className="row">
-          <div className="col-md-offset-2 well col-md-8 col-xs-offset-1 col-xs-10 create-budget-container">
+          <div className="col-md-offset-1 well col-md-10 col-xs-offset-1 col-xs-10 create-budget-container">
             <form onSubmit={this.handleSubmit}>
               <div className="row">
                 <div className="income-section col-xs-12">

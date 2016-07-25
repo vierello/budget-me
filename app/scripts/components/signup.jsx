@@ -1,5 +1,4 @@
 var React = require('react');
-var $ = require('jquery');
 
 var NavComponent = require('./login.jsx').NavComponent;
 var User = require('../models/users').User;
@@ -8,15 +7,13 @@ var User = require('../models/users').User;
 var SignupComponent = React.createClass({
   signup: function(e){
     e.preventDefault();
-    var email = $('#signup-email').val();
-    var username = $('#signup-username').val();
-    var password = $('#signup-password').val();
+    var email = jQuery('#signup-email').val();
+    var username = jQuery('#signup-username').val();
+    var password = jQuery('#signup-password').val();
     var self = this;
 
     var newUser = new User();
     newUser.set({'email': email, 'username': username, 'password': password});
-
-    console.log(newUser);
 
     newUser.save().done(function(){
       self.props.router.navigate('login/', {trigger: true})
