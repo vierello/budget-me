@@ -8,14 +8,25 @@ var PointerFieldModel = Backbone.Model.extend({
 
 var Actual = PointerFieldModel.extend({
   idAttribute: "objectId",
-  urlRoot: 'https://av-awesome-server.herokuapp.com/classes/actual'
+  urlRoot: 'https://av-awesome-server.herokuapp.com/classes/actual',
 });
 
 var ActualCollection = Backbone.Collection.extend({
   model: Actual,
-  url: 'https://av-awesome-server.herokuapp.com/classes/actual',
   parse: function(serverResponse){
     return serverResponse.results;
+  },
+  url: function(){
+    var url = 'https://av-awesome-server.herokuapp.com/classes/actual';
+    if(this.whereClause){
+      return url + this.whereClause;
+    }else{
+      return url;
+    }
+  },
+  where: function(where){
+    this.whereClause = '?where=' + encodeURI(JSON.stringify(where));  // more stuff here
+    return this;
   }
 });
 

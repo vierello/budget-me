@@ -9,7 +9,7 @@ var MainComponent = require('./components/main.jsx').MainComponent;
 var BudgetReportComponent = require('./components/budgetreport.jsx').BudgetReportComponent;
 var CreateGoalComponent = require('./components/creategoal.jsx').CreateGoalComponent;
 var ActualListComponent = require('./components/actuallist.jsx').ActualListComponent;
-
+var User = require('./models/users').User;
 
 var Router = Backbone.Router.extend({
   routes: {
@@ -21,6 +21,12 @@ var Router = Backbone.Router.extend({
     'budgetreport/': 'budgetReport',
     'creategoal/': 'createGoal',
     'actuallist/': 'actualList'
+  },
+
+  initialize: function(){
+    if(User.isLoggedIn()){
+      var currentUser = User.restore();
+    }
   },
 
   login: function(){

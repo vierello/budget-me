@@ -59,8 +59,8 @@ var ActualInputComponent = React.createClass({
             </div>
           <div className="row">
             <div className="add-view-buttons col-xs-12">
-              <input type="submit" className="pull-left btn btn-success" value="Add Expense"/>
-              <a href="#actuallist/"><input className="pull-right btn btn-primary" value="View Expenses"/></a>
+              <button type="submit" className="pull-left btn btn-success">Add Expense</button>
+              <a href="#actuallist/" className="pull-right btn btn-primary">View Expenses</a>
             </div>
           </div>
         </form>

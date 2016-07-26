@@ -5,6 +5,8 @@ var Budget = require('../models/budget').Budget;
 var BudgetCollection = require('../models/budget').BudgetCollection;
 var NavBarComponent = require('./main.jsx').NavBarComponent;
 var IncomeCollection = require('../models/income').IncomeCollection;
+var ActualCollection = require('../models/actual').ActualCollection;
+var Actual = require('../models/actual').Actual;
 
 
 var BudgetIncomeComponent = React.createClass({
@@ -40,6 +42,20 @@ var BudgetIncomeComponent = React.createClass({
 });
 
 var BudgetExpenseComponent = React.createClass({
+  componentWillMount: function(){
+    var self = this;
+    //var actualExpense = this.props.actualCollection;
+    var actualExpenseCollection = new ActualCollection();
+    //console.log(actualExpenseCollection);
+    actualExpenseCollection.where({
+      "type": "Mortgage/Rent"
+    }).fetch().done(function(){
+      console.log(actualExpenseCollection);
+      self.setState({actualExpenseCollection: actualExpenseCollection});
+      console.log(self.state.actualExpenseCollection);
+    });
+  },
+
   render: function(){
     var budgets = this.props.budgetCollection;
     var budget = budgets.map(function(budgetItem, index){
@@ -72,23 +88,30 @@ var BudgetExpenseComponent = React.createClass({
 });
 
 var TotalIncomeComponent = React.createClass({
+
   render: function(){
+    var budgetIncome = this.props.totalBudgetIncome;
+    //console.log(budgetIncome);
+    var self = this;
     var incomes = [];
     var budgets = this.props.budgetCollection;
     //console.log(budgets);
     var budget = budgets.map(function(budgetItem, index){
 
       var incomeTotal = budgetItem.get('income').map(function(incomeItem, index){
-        var incomeincome = incomeItem.amount;
-        return incomes.push(incomeincome)
+        var incomeItems = incomeItem.amount;
+        return incomes.push(incomeItems)
       });
       //console.log(incomes);
 
       var totalIncome = incomes.reduce(function(previousValue, currentValue, index){
         var income = previousValue + currentValue
+        //self.setState({budgetIncome: totalIncome});
+        //console.log(budgetIncome);
         return income
       });
-      //console.log(totalIncome);
+      //console.log(budgetIncome);
+
       return(
         <div key={index}>
           ${totalIncome.toFixed(2)}
@@ -112,8 +135,8 @@ var TotalExpenseComponent = React.createClass({
     var budget = budgets.map(function(budgetItem, index){
 
       var expenseTotal = budgetItem.get('expense').map(function(expenseItem, index){
-        var expenseexpense = expenseItem.amount;
-        return expenses.push(expenseexpense)
+        var expenseItems = expenseItem.amount;
+        return expenses.push(expenseItems)
       });
       //console.log(incomes);
 
@@ -137,10 +160,21 @@ var TotalExpenseComponent = React.createClass({
   }
 });
 
+// var NetIncomeComponent = React.createClass({
+//   render: function(){
+//     return (
+//       <TotalIncomeComponent/>
+//     )
+//   }
+// });
+
 var BudgetReportComponent = React.createClass({
   getInitialState: function(){
     return {
       budgetCollection: [],
+      actualCollection: [],
+      totalBudgetIncome: 0,
+      totalBudgetExpense: 0
     }
   },
 
@@ -187,11 +221,11 @@ var BudgetReportComponent = React.createClass({
             <h2>Income</h2>
             <BudgetIncomeComponent budgetCollection={this.state.budgetCollection}/>
             <br/>
-            <TotalIncomeComponent budgetCollection={this.state.budgetCollection}/>
+            <TotalIncomeComponent budgetCollection={this.state.budgetCollection} totalBudgetIncome={this.state.totalBudgetIncome}/>
             <h2>Expense</h2>
-            <BudgetExpenseComponent budgetCollection={this.state.budgetCollection}/>
+            <BudgetExpenseComponent budgetCollection={this.state.budgetCollection} actualCollection={this.state.actualCollection}/>
             <br/>
-            <TotalExpenseComponent budgetCollection={this.state.budgetCollection}/>
+            <TotalExpenseComponent budgetCollection={this.state.budgetCollection} totalBudgetExpense={this.state.totalBudgetExpense}/>
           </div>
         </div>
       </NavComponent>

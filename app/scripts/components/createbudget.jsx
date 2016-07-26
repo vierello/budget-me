@@ -25,6 +25,7 @@ var IncomeForm = React.createClass({
   },
 
   render: function(){
+    var self = this;
     var income = this.props.incomeItem;
     return (
         <div className="row income-form">
@@ -50,7 +51,7 @@ var IncomeForm = React.createClass({
           </div>
           <div className="col-md-2 col-xs-12"><input onChange={this.handleDate} className="input-field income-input" type="date" placeholder="Date Received?"/></div>
           <div className="col-md-2 col-xs-12"><span className="dollar-sign">$</span><input onChange={this.handleAmount} className="input-field income-input" type="number" min="0.01" step="0.01" placeholder="Amount"/></div>
-          <div className="col-md-1 col-xs-12"><button onClick={this.props.handleDelete} className="btn delete-button btn-danger">X</button></div>
+          <div className="col-md-1 col-xs-12"><button onClick={function(){self.props.handleIncomeDelete(self.props.incomeItem)}} className="btn delete-button btn-danger">X</button></div>
         </div>
     )
   }
@@ -101,7 +102,7 @@ var ExpenseForm = React.createClass({
           <div className="col-md-3 col-xs-12"><input onChange={this.handlePayee} className="input-field expense-input" type="text" placeholder="Payee"/></div>
           <div className="col-md-2 col-xs-12"><input onChange={this.handleDueDate} className="input-field expense-input" type="date" placeholder="Date Due"/></div>
           <div className="col-md-2 col-xs-12"><span className="dollar-sign">$</span><input onChange={this.handleAmount} className="input-field expense-input" type="number" min="0.01" step="0.01" placeholder="Amount"/></div>
-          <div className="col-md-1 col-xs-12"><button onClick={this.props.handleDelete} className="btn delete-button btn-danger">X</button></div>
+          <div className="col-md-1 col-xs-12"><button onClick={this.props.handleExpenseDelete} className="btn delete-button btn-danger">X</button></div>
         </div>
     )
   }
@@ -172,18 +173,22 @@ var CreateBudgetComponent = React.createClass({
     this.state.expense.add({});
   },
 
-  handleDelete: function(e){
-    e.preventDefault();
+  handleIncomeDelete: function(model){
+    this.state.income.remove(model);
+  },
+
+  handleExpenseDelete: function(model){
+
   },
 
   render: function(){
     var self = this;
     var incomeFormSet = this.state.income.map(function(incomeItem, index){
-      return <IncomeForm key={incomeItem.cid} handleDelete={self.handleDelete} incomeItem={incomeItem}/>
+      return <IncomeForm key={incomeItem.cid} handleIncomeDelete={self.handleIncomeDelete} incomeItem={incomeItem}/>
     });
 
     var expenseFormSet = this.state.expense.map(function(expenseItem, index){
-      return <ExpenseForm key={expenseItem.cid} handleDelete={self.handleDelete} expenseItem={expenseItem}/>
+      return <ExpenseForm key={expenseItem.cid} handleExpenseDelete={self.handleExpenseDelete} expenseItem={expenseItem}/>
     });
 
     return (
