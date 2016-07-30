@@ -1,7 +1,7 @@
 var React = require('react');
 
-var NavComponent = require('./login.jsx').NavComponent;
-var NavBarComponent = require('./main.jsx').NavBarComponent;
+var NavComponent = require('./main.jsx').NavComponent;
+
 
 var CreateGoalComponent = React.createClass({
   handleGoalName: function(e){
@@ -15,7 +15,7 @@ var CreateGoalComponent = React.createClass({
   handleGoalDate: function(e){
     this.goal.set('date', e.target.value);
   },
-  
+
   render: function(){
     return (
       <NavComponent>

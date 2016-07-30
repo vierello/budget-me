@@ -5,6 +5,8 @@ $icon-font-path: '../../node_modules/bootstrap-sass/assets/fonts/bootstrap/';
 // Import Bootstrap
 @import '../../node_modules/bootstrap-sass/assets/stylesheets/bootstrap';
 
+
+// Global Styles -----------------------------------------------------
 *,
 *::before,
 *::after {
@@ -26,67 +28,71 @@ hr {
   margin-bottom: 10px;
 }
 
-.s {
-  text-transform: lowercase;
+.wrapper-login {
+  background-image: url('../images/coin-background.png');
+  background-size: cover;
+  background-repeat: no-repeat;
+  height: 100vh;
+  overflow: scroll;
+}
+
+.wrapper-main {
+  //background-image: url('../images/table-background.png');
+  background: rgba(0, 0, 0, .2);
+  background-size: cover;
+  background-repeat: no-repeat;
+  height: 100vh;
+  overflow: scroll;
 }
 
 .container-fluid {
-  padding: 0px;
   position: relative;
-  background-image: url('../images/parchment-background.png');
-  background-size: auto;
-  background-repeat: repeat;
 }
 
 .children-container {
   min-height: 650px;
 }
 
-.login-form-container {
-  margin-top: 60px;
+.dollar-sign {
+  position: absolute;
+  left: 2px;
+  top: 8px;
 }
 
-.signup-form-container {
-  margin-top: 60px;
-}
+//App Header Styles ----------------------------------------------------
 
 .app-header {
-  height:230px;
-  background-image: url('../images/header-background.jpg');
   background-size: cover;
-  text-align: center;
   h1 {
-    font-size: 160px;
-    margin-top: 0px;
-    line-height: 230px;
-    color: #09397A;
-    -webkit-text-stroke-width: 2px;
-    -webkit-text-stroke-color: white;
+    font-size: 80px;
+    color: white;
     font-weight: bold;
+    text-align: center;
   }
 }
 
-.login-title {
-  text-align: center;
+.app-login-header {
+  background-size: cover;
+  h1 {
+    font-size: 80px;
+    color: #09397A;
+    font-weight: bold;
+    text-align: center;
+    -webkit-text-stroke: 1px white;
+  }
 }
+
+//App Footer Styles ----------------------------------------------------
 
 .app-footer {
-  height: 100px;
-  background-image: url('../images/header-background.jpg');
-  background-size: cover;
   position: relative;
   bottom: 0px;
-  left: 0px;
   .created-by {
     margin-left: 20px;
-    line-height: 100px;
     font-size: 20px;
-    color: #09397A;
-    font-weight: bold;
+    color: white;
   }
   ul {
-    float: right;
-    line-height: 100px;
     margin-bottom: 0px;
   }
 }
@@ -105,6 +111,213 @@ hr {
   }
 }
 
+//Nav Bar Styles ------------------------------------------------------
+
+.nav-style {
+  background-color: #09397A;
+}
+
+.navbar-container {
+  padding: 0;
+}
+
+.nav-links {
+  color: white;
+  margin-left: 30px;
+  font-size: 24px;
+  text-align: center;
+}
+
+.navbar {
+  border: none;
+}
+
+.navbar-nav {
+  padding: 0;
+}
+
+.navbar-nav li {
+  text-align: center;
+  float: none;
+}
+
+.navbar-default .navbar-nav li a {
+  color: white;
+  display: block;
+  text-align: center;
+}
+
+.navbar-default .navbar-nav li a:hover {
+  color: white;
+}
+
+//Login Page Styles ---------------------------------------------------
+
+.login-form-container {
+  background-color: rgba(200, 200, 200, .7);
+  height: 30%;
+  position: relative;
+  top: 230px;
+  border-radius: 100px;
+}
+
+.login-form {
+  margin-bottom: 0px;
+}
+
+.login-title {
+  text-align: center;
+  background-color: #09397A;
+  color: white;
+  margin: 0 0 10px 0;
+}
+
+.control-input {
+  font-size: 18px;
+}
+
+.control-label {
+  font-size: 18px;
+  color: #09397A;
+}
+
+.remember-me {
+  font-size: 18px;
+  color: #09397A;
+  font-weight: bold;
+}
+
+.or {
+  font-size: 18px;
+  color: #09397A;
+  font-weight: bold;
+  text-align: center;
+}
+
+.button-color {
+  font-size: 18px;
+  background-color: #09397A;
+}
+
+.signup-form-container {
+  background-color: rgba(200, 200, 200, .7);
+  position: relative;
+  top: 210px;
+  border-radius: 100px;
+}
+
+.signup-input {
+  width: 100%;
+}
+
+.form-horizontal .checkbox {
+  padding-top: 0px;
+}
+
+.flipper-container {
+    position: relative;
+    top: 3vh;
+    left: 25vw;
+    width:900px;
+    height:900px;
+    margin-right: 0 auto;
+    display:block;
+    perspective: none;
+
+    span {
+        color:white;
+    }
+
+    >div.flipper {
+        float:left;
+        width:100%;
+        height:100%;
+        position:relative;
+        transform-style: preserve-3d;
+
+        .front, .back {
+            float:left;
+            display:block;
+            width:100%;
+            height:100%;
+            backface-visibility: hidden;
+            position:absolute;
+            top:0;
+            left:0;
+            transform-style: preserve-3d;
+            -webkit-transition: -webkit-transform ease 1000ms;
+            transition: transform ease 1000ms;
+        }
+
+        .front {
+            z-index:2;
+            background-image: url('../images/Quarter-front.png');
+            background-size: cover;
+            background-repeat: no-repeat;
+
+            /* front tile styles go here! */
+        }
+
+        .back {
+            background-image: url('../images/SC-quarter-back.png');
+            background-size: cover;
+            background-repeat: no-repeat;
+
+            /* back tile styles go here! */
+        }
+    }
+}
+
+.flipper-container.horizontal {
+    .front {
+      transform: rotateY(0deg);
+    }
+    .back {
+      transform: rotateY(-1260deg);
+    }
+
+    div.flipper.flipped {
+        .front {
+          transform: rotateY(1260deg);
+        }
+        .back {
+          transform: rotateY(0deg);
+        }
+    }
+}
+
+.flipper-container.vertical {
+    .front {
+      transform: rotateX(0deg);
+    }
+    .back {
+      transform: rotateX(-180deg);
+    }
+
+    div.flipper.flipped {
+        .front {
+          transform: rotateX(180deg);
+        }
+        .back {
+          transform: rotateX(0deg);
+        }
+    }
+}
+
+
+//Signup Page Styles --------------------------------------------------
+
+
+
+//Home Page Styles ----------------------------------------------------
+
+.nav-sidebar {
+  background-color: #09397A;
+  color: white;
+  height: 100vh;
+  overflow: scroll;
+}
+
 .main-page-layout {
   padding: 0;
 }
@@ -116,6 +329,10 @@ hr {
   font-weight: bold;
   text-transform: capitalize;
   background-color: #09397A;
+}
+
+.s {
+  text-transform: lowercase;
 }
 
 .actual-title {
@@ -130,12 +347,14 @@ hr {
 .actual-input {
   padding: 0px;
   margin-top: 16px;
+  font-size: 18px;
 }
 
 .actual-expense-input {
   width: 90%;
   line-height: 30px;
   border-radius: 5px;
+  font-size: 18px;
 }
 
 .actual-expense-box {
@@ -149,52 +368,22 @@ hr {
 
 .add-view-buttons {
   margin-top: 10px;
+  font-size: 18px;
 }
 
-.actual-list {
-  margin-top: 12px;
-}
-
-.return-home-button {
-  text-align: center;
-  margin-top: 20px;
-}
-
-.create-account {
-  padding-left: 0;
-}
-
-// .address-image-input {
-//   padding: 0;
-// }
-//
-// .user-image {
-//   height: 100px;
-//   width: 100px;
-//   border: 1px solid #BABABA;
-//   color: #BABABA;
-// }
-
-.nav-style {
-  background-color: #09397A;
-}
-
-.nav-links {
-  color: white;
-  margin-left: 30px;
-  font-size: 24px;
-}
-
-.navbar-default .navbar-nav li a {
-  color: white;
-}
-
-.navbar-default .navbar-nav li a:hover {
-  color: white;
-}
+//Create Budget Page Styles ------------------------------------------
 
 .create-budget-container {
   margin-top: 60px;
+}
+
+.save-budget-button {
+  text-align: center;
+  margin-top: 30px;
+  .save-button {
+    width: 200px;
+    font-size: 18px;
+  }
 }
 
 .table-headings {
@@ -211,10 +400,6 @@ hr {
     background-color: #09397A;
     color: white;
   }
-}
-
-.input-header {
-  font-size: 20px;
 }
 
 .expense-section {
@@ -237,23 +422,26 @@ hr {
   margin-top: 6px;
 }
 
+.delete-button {
+  width: 36px;
+  height: 36px;
+  margin-left: 20%;
+  font-size: 18px;
+}
+
+.input-header {
+  font-size: 18px;
+}
+
 .input-field {
   line-height: 30px;
   width: 100%;
   border-radius: 5px;
 }
 
-.delete-button {
-  width: 36px;
-  height: 36px;
-  margin-left: 20%;
-}
+//Budget Report Page Styles ------------------------------------------
 
-.dollar-sign {
-  position: absolute;
-  left: 2px;
-  top: 8px;
-}
+//Goals Page Styles --------------------------------------------------
 
 .goal-title{
   display: inline-block;
@@ -262,6 +450,75 @@ hr {
   margin: 0;
   background-color: #09397A;
   color: white;
+}
+
+//Profile Page Styles ------------------------------------------------
+
+.profile-form {
+  margin: 0 10px;
+}
+
+.profile-input-group {
+  width: 100%;
+}
+
+.profile-input {
+  float: right;
+  width: 80%;
+}
+
+.save-profile-button {
+  text-align: center;
+  margin-top: 30px;
+  .save-button {
+    width: 200px;
+    font-size: 18px;
+  }
+}
+
+.profile-picture-label,
+.profile-picture-input {
+  display: block;
+}
+
+.profile-picture-input {
+  height: 150px;
+  width: 200px;
+  font-size: 18px;
+}
+
+.profile-picture-input::-webkit-input-placeholder {
+text-align: center;
+}
+
+.profile-picture-input:-moz-placeholder { /* Firefox 18- */
+text-align: center;
+}
+
+.profile-picture-input::-moz-placeholder {  /* Firefox 19+ */
+text-align: center;
+}
+
+.profile-picture-input:-ms-input-placeholder {
+text-align: center;
+}
+
+
+//Actual List Page Styles --------------------------------------------
+
+.actual-list {
+  margin-top: 12px;
+  font-size: 18px;
+}
+
+th {
+  font-size: 18px;
+}
+
+.return-home-button {
+  text-align: center;
+  margin-top: 20px;
+  font-size: 18px;
 }
 
 @media(max-width: 750px) {

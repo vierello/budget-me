@@ -1,6 +1,5 @@
 var React = require('react');
 
-var NavComponent = require('./login.jsx').NavComponent;
 var Actual = require('../models/actual').Actual;
 var ActualCollection = require('../models/actual').ActualCollection;
 
@@ -21,7 +20,9 @@ var ActualInputComponent = React.createClass({
   handleSubmit: function(e){
     e.preventDefault();
     var user = JSON.parse(localStorage.getItem('user'));
+    console.log(user);
     this.props.actualExpense.setPointer('user', user, '_User');
+    console.log(this.props.actualExpense);
     this.props.actualExpense.save();
   },
 
@@ -70,29 +71,56 @@ var ActualInputComponent = React.createClass({
   }
 });
 
-var NavBarComponent = React.createClass({
+var NavComponent = React.createClass({
   render: function(){
     return (
-      <nav className="navbar navbar-default">
-        <div className="container-fluid">
-          <div className="navbar-header">
-            <button type="button" className="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-              <span className="sr-only">Toggle navigation</span>
-              <span className="icon-bar"></span>
-              <span className="icon-bar"></span>
-              <span className="icon-bar"></span>
-            </button>
-          </div>
-          <div className="nav-style collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-            <ul className="nav navbar-nav">
-              <li><a className="nav-links" href="#main/">Home<span className="sr-only">(current)</span></a></li>
-              <li><a className="nav-links" href="#createbudget/">Create Budget</a></li>
-              <li><a className="nav-links" href="#budgetreport/">Budget Report</a></li>
-              <li><a className="nav-links" href="#creategoal/">Goals</a></li>
-            </ul>
+      <div>
+        <div className="row">
+          <div className="col-md-12">
+            <div className="row">
+              <div className="nav-sidebar col-md-2">
+                <header className="app-header">
+                  <h1>Budget</h1>
+                  <h1>Me</h1>
+                </header>
+                <nav className="navbar navbar-default">
+                  <div className="navbar-container container-fluid">
+                    <div className="navbar-header">
+                      <button type="button" className="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                        <span className="sr-only">Toggle navigation</span>
+                        <span className="icon-bar"></span>
+                        <span className="icon-bar"></span>
+                        <span className="icon-bar"></span>
+                      </button>
+                    </div>
+                    <div className="nav-style collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                      <ul className="nav navbar-nav">
+                        <li><a className="nav-links" href="#main/">Home<span className="sr-only">(current)</span></a></li>
+                        <li><a className="nav-links" href="#createbudget/">Create Budget</a></li>
+                        <li><a className="nav-links" href="#budgetreport/">Budget Report</a></li>
+                        <li><a className="nav-links" href="#creategoal/">Goals</a></li>
+                        <li><a className="nav-links" href="#profile/">Profile</a></li>
+                      </ul>
+                    </div>
+                  </div>
+                </nav>
+                {// <footer className="app-footer">
+                //   <span className="created-by">Created by ACJ Engineering, Inc.</span>
+                //   <ul>
+                //     <li className="social-media-links"><a href="#"><i className="fa fa-facebook-official"></i></a></li>
+                //     <li className="social-media-links"><a href="#"><i className="fa fa-twitter-square"></i></a></li>
+                //     <li className="social-media-links"><a href="#"><i className="fa fa-youtube-square"></i></a></li>
+                //   </ul>
+                // </footer>
+                }
+              </div>
+              <div className="col-md-10 children-container">
+                {this.props.children}
+              </div>
+            </div>
           </div>
         </div>
-      </nav>
+      </div>
     )
   }
 });
@@ -107,7 +135,6 @@ var MainComponent = React.createClass({
   render: function(){
     return (
       <NavComponent>
-        <NavBarComponent/>
         <div className="row">
           <div className="main-page-layout col-md-offset-1 col-md-10">
             <div>
@@ -123,6 +150,6 @@ var MainComponent = React.createClass({
 });
 
 module.exports = {
+  'NavComponent': NavComponent,
   'MainComponent': MainComponent,
-  'NavBarComponent': NavBarComponent
 }

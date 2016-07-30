@@ -1,7 +1,7 @@
 var React = require('react');
 
 var ActualCollection = require('../models/actual').ActualCollection;
-var NavComponent = require('./login.jsx').NavComponent;
+var NavComponent = require('./main.jsx').NavComponent;
 var NavBarComponent = require('./main.jsx').NavBarComponent;
 
 

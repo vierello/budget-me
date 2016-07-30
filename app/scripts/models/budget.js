@@ -7,6 +7,10 @@ var PointerFieldModel = Backbone.Model.extend({
 });
 
 var Budget = PointerFieldModel.extend({
+  defaults: {
+    income: [],
+    expense: []
+  },
   idAttribute: 'objectId',
   urlRoot: 'https://av-awesome-server.herokuapp.com/classes/budgets'
 });

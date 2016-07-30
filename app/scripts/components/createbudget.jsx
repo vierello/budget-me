@@ -1,7 +1,6 @@
 var React = require('react');
 
-var NavComponent = require('./login.jsx').NavComponent;
-var NavBarComponent = require('./main.jsx').NavBarComponent;
+var NavComponent = require('./main.jsx').NavComponent;
 var Budget = require('../models/budget').Budget;
 var IncomeCollection = require('../models/income').IncomeCollection;
 var ExpenseCollection = require('../models/expense').ExpenseCollection;
@@ -51,7 +50,7 @@ var IncomeForm = React.createClass({
           </div>
           <div className="col-md-2 col-xs-12"><input onChange={this.handleDate} className="input-field income-input" type="date" placeholder="Date Received?"/></div>
           <div className="col-md-2 col-xs-12"><span className="dollar-sign">$</span><input onChange={this.handleAmount} className="input-field income-input" type="number" min="0.01" step="0.01" placeholder="Amount"/></div>
-          <div className="col-md-1 col-xs-12"><button onClick={function(){self.props.handleIncomeDelete(self.props.incomeItem)}} className="btn delete-button btn-danger">X</button></div>
+          <div className="col-md-1 col-xs-12"><button onClick={function(){self.props.handleIncomeDelete(self.props.incomeItem)}} type="button" className="btn delete-button btn-danger">X</button></div>
         </div>
     )
   }
@@ -75,6 +74,7 @@ var ExpenseForm = React.createClass({
   },
 
   render: function(){
+    var self = this;
     var expense = this.props.expenseItem;
     return (
         <div className="row expense-form">
@@ -102,7 +102,7 @@ var ExpenseForm = React.createClass({
           <div className="col-md-3 col-xs-12"><input onChange={this.handlePayee} className="input-field expense-input" type="text" placeholder="Payee"/></div>
           <div className="col-md-2 col-xs-12"><input onChange={this.handleDueDate} className="input-field expense-input" type="date" placeholder="Date Due"/></div>
           <div className="col-md-2 col-xs-12"><span className="dollar-sign">$</span><input onChange={this.handleAmount} className="input-field expense-input" type="number" min="0.01" step="0.01" placeholder="Amount"/></div>
-          <div className="col-md-1 col-xs-12"><button onClick={this.props.handleExpenseDelete} className="btn delete-button btn-danger">X</button></div>
+          <div className="col-md-1 col-xs-12"><button onClick={function(){self.props.handleExpenseDelete(self.props.expenseItem)}} type="button" className="btn delete-button btn-danger">X</button></div>
         </div>
     )
   }
@@ -175,10 +175,12 @@ var CreateBudgetComponent = React.createClass({
 
   handleIncomeDelete: function(model){
     this.state.income.remove(model);
+    this.forceUpdate();
   },
 
   handleExpenseDelete: function(model){
-
+    this.state.expense.remove(model);
+    this.forceUpdate();
   },
 
   render: function(){
@@ -200,7 +202,7 @@ var CreateBudgetComponent = React.createClass({
               <div className="row">
                 <div className="income-section col-xs-12">
                   <h3 className="income-header well">Income</h3>
-                  <button onClick={this.addIncomeItem} className="pull-right btn btn-success">Add Item</button>
+                  <button onClick={this.addIncomeItem} className="pull-right btn btn-success">Add Income Item</button>
                     <div className="form-group">
                       <div className="row table-headings">
                         <span className="col-md-4 col-xs-12 input-header">Type? <hr/></span>
@@ -217,7 +219,7 @@ var CreateBudgetComponent = React.createClass({
               <div className="row">
                 <div className="expense-section col-xs-12">
                   <h3 className="expense-header well">Expenses</h3>
-                  <button onClick={this.addExpenseItem} className="pull-right btn btn-success">Add Item</button>
+                  <button onClick={this.addExpenseItem} className="pull-right btn btn-success">Add Expense Item</button>
                   <div className="form-group">
                     <div className="row table-headings">
                       <span className="col-md-4 col-xs-12 input-header">Type? <hr/></span>
@@ -228,7 +230,8 @@ var CreateBudgetComponent = React.createClass({
                     </div>
                     {expenseFormSet}
                   </div>
-                  <input type="submit" className="btn btn-success" value="Save Budget"/>
+                  <hr/>
+                  <p className="save-budget-button"><input type="submit" className="save-button btn btn-success" value="Save Budget"/></p>
                 </div>
               </div>
             </form>

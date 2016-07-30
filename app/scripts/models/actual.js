@@ -2,6 +2,7 @@ var Backbone = require('backbone');
 
 var PointerFieldModel = Backbone.Model.extend({
   setPointer: function(field, obj, className){
+    console.log('id', obj.objectId);
     this.set(field, {'__type': 'Pointer', 'className': className, 'objectId': obj.objectId});
   }
 });
@@ -24,8 +25,8 @@ var ActualCollection = Backbone.Collection.extend({
       return url;
     }
   },
-  where: function(where){
-    this.whereClause = '?where=' + encodeURI(JSON.stringify(where));  // more stuff here
+  query: function(where){
+    this.whereClause = '?where=' + encodeURI(JSON.stringify(where));
     return this;
   }
 });

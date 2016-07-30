@@ -1,9 +1,18 @@
 var Backbone = require('backbone');
+var _ = require('underscore');
 
 
 var User = Backbone.Model.extend({
-  urlRoot: 'https://av-awesome-server.herokuapp.com/users'
-},{
+  urlRoot: 'https://av-awesome-server.herokuapp.com/users',
+  toJSON: function(){
+    var data = _.clone(this.attributes);
+    //delete data.objectId;
+    delete data.createdAt;
+    delete data.updatedAt;
+    return data
+  }
+},
+{
   login: function(username, password, callbacks){
     var self = this;
     var loggedInUser = new User();
@@ -20,6 +29,7 @@ var User = Backbone.Model.extend({
       callbacks.fail(loggedInUser, error);
     });
   },
+
   _setAuthHeaders: function(sessionToken){
     jQuery.ajaxSetup({
       beforeSend: function(xhr){
@@ -29,6 +39,7 @@ var User = Backbone.Model.extend({
       }
     });
   },
+
   restore() {
     var userData = JSON.parse(localStorage.getItem('user'));
     var user = new User(userData);

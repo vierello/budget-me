@@ -9,7 +9,10 @@ var MainComponent = require('./components/main.jsx').MainComponent;
 var BudgetReportComponent = require('./components/budgetreport.jsx').BudgetReportComponent;
 var CreateGoalComponent = require('./components/creategoal.jsx').CreateGoalComponent;
 var ActualListComponent = require('./components/actuallist.jsx').ActualListComponent;
+var ProfileComponent = require('./components/profile.jsx').ProfileComponent;
 var User = require('./models/users').User;
+var App = require('./components/login.jsx').App;
+
 
 var Router = Backbone.Router.extend({
   routes: {
@@ -20,7 +23,8 @@ var Router = Backbone.Router.extend({
     'createbudget/': 'createBudget',
     'budgetreport/': 'budgetReport',
     'creategoal/': 'createGoal',
-    'actuallist/': 'actualList'
+    'actuallist/': 'actualList',
+    'profile/': 'profile'
   },
 
   initialize: function(){
@@ -31,9 +35,11 @@ var Router = Backbone.Router.extend({
 
   login: function(){
     ReactDOM.render(
-      React.createElement(LoginComponent, {router: this}),
+      React.createElement(App, {router: this}),
       document.getElementById('container')
     )
+    jQuery('#container').addClass('wrapper-login');
+    jQuery('#container').removeClass('wrapper-main');
   },
 
   signup: function(){
@@ -41,6 +47,8 @@ var Router = Backbone.Router.extend({
       React.createElement(SignupComponent, {router: this}),
       document.getElementById('container')
     )
+    jQuery('#container').addClass('wrapper-login');
+    jQuery('#container').removeClass('wrapper-main');
   },
 
   main: function(){
@@ -48,6 +56,8 @@ var Router = Backbone.Router.extend({
       React.createElement(MainComponent, {router: this}),
       document.getElementById('container')
     )
+    jQuery('#container').addClass('wrapper-main');
+    jQuery('#container').removeClass('wrapper-login');
   },
 
   createBudget: function(){
@@ -55,6 +65,8 @@ var Router = Backbone.Router.extend({
       React.createElement(CreateBudgetComponent, {router: this}),
       document.getElementById('container')
     )
+    jQuery('#container').addClass('wrapper-main');
+    jQuery('#container').removeClass('wrapper-login');
   },
 
   budgetReport: function(){
@@ -62,6 +74,8 @@ var Router = Backbone.Router.extend({
       React.createElement(BudgetReportComponent, {router: this}),
       document.getElementById('container')
     )
+    jQuery('#container').addClass('wrapper-main');
+    jQuery('#container').removeClass('wrapper-login');
   },
 
   createGoal: function(){
@@ -69,6 +83,8 @@ var Router = Backbone.Router.extend({
       React.createElement(CreateGoalComponent, {router: this}),
       document.getElementById('container')
     )
+    jQuery('#container').addClass('wrapper-main');
+    jQuery('#container').removeClass('wrapper-login');
   },
 
   actualList: function(){
@@ -76,6 +92,17 @@ var Router = Backbone.Router.extend({
       React.createElement(ActualListComponent, {router: this}),
       document.getElementById('container')
     )
+    jQuery('#container').addClass('wrapper-main');
+    jQuery('#container').removeClass('wrapper-login');
+  },
+
+  profile: function(){
+    ReactDOM.render(
+      React.createElement(ProfileComponent, {router: this}),
+      document.getElementById('container')
+    )
+    jQuery('#container').addClass('wrapper-main');
+    jQuery('#container').removeClass('wrapper-login');
   }
 });
 
