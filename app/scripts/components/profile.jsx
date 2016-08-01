@@ -37,34 +37,34 @@ var ProfileForm = React.createClass({
   render: function(){
     console.log(this.props.user);
     return (
-    <form onSubmit={this.handleSubmit} className="profile-form form-horizontal">
+    <form onSubmit={this.handleSubmit} className="profile-form">
       <h2>Profile Information</h2>
       <div className="row">
         <div className="col-xs-12 col-md-6 form-group">
           <div className="profile-input-group col-xs-12 form-group">
-            <label htmlFor="profile-first-name">First Name: </label>
-            <input onChange={this.handleFirstName} className="profile-input" id="profile-first-name" type="text" placeholder="First Name"/>
+            <label htmlFor="profile-first-name" className="control-label">First Name: </label>
+            <input onChange={this.handleFirstName} className="profile-input control-input" id="profile-first-name" type="text" placeholder="First Name"/>
           </div>
           <div className="profile-input-group col-xs-12 form-group">
-            <label htmlFor="profile-last-name">Last Name: </label>
-            <input onChange={this.handleLastName} className="profile-input" id="profile-last-name" type="text" placeholder="Last Name"/>
+            <label htmlFor="profile-last-name" className="control-label">Last Name: </label>
+            <input onChange={this.handleLastName} className="profile-input control-input" id="profile-last-name" type="text" placeholder="Last Name"/>
           </div>
           <div className="profile-input-group col-xs-12 form-group">
-            <label htmlFor="profile-address">Address: </label>
-            <input onChange={this.handleAddress} className="profile-input" id="profile-address" type="text" placeholder="Street Address"/>
+            <label htmlFor="profile-address" className="control-label">Address: </label>
+            <input onChange={this.handleAddress} className="profile-input control-input" id="profile-address" type="text" placeholder="Street Address"/>
           </div>
           <div className="profile-input-group col-xs-12 form-group">
-            <label htmlFor="profile-city">City, State: </label>
-            <input onChange={this.handleCityState} className="profile-input" id="profile-city" type="text" placeholder="City, State"/>
+            <label htmlFor="profile-city" className="control-label">City, State: </label>
+            <input onChange={this.handleCityState} className="profile-input control-input" id="profile-city" type="text" placeholder="City, State"/>
           </div>
           <div className="profile-input-group col-xs-12 form-group">
-            <label htmlFor="profile-zip">Zip Code: </label>
-            <input onChange={this.handleZip} className="profile-input" id="profile-zip" type="text" placeholder="Zip Code"/>
+            <label htmlFor="profile-zip" className="control-label">Zip Code: </label>
+            <input onChange={this.handleZip} className="profile-input control-input" id="profile-zip" type="text" placeholder="Zip Code"/>
           </div>
         </div>
         <div className="col-xs-12 col-md-6 form-group">
-          <label className="profile-picture-label" htmlFor="profile-picture">Picture: </label>
-          <input onChange={this.handlePicture} className="profile-picture-input" id="profile-picture" type="url" placeholder="Image"/>
+          <label className="profile-picture-label" className="control-label" htmlFor="profile-picture">Picture: </label>
+          <input onChange={this.handlePicture} className="profile-picture-input control-input" id="profile-picture" type="url" placeholder="Image"/>
         </div>
         <div className="row">
           <div className="col-xs-12">
@@ -87,7 +87,6 @@ var ProfileComponent = React.createClass({
   render: function(){
     return(
       <NavComponent>
-        <NavBarComponent/>
         <div className="row">
           <div className="col-xs-12 col-md-offset-3 col-md-6 well">
             <ProfileForm user={this.state.user}/>

@@ -85,7 +85,7 @@ var ExpenseForm = React.createClass({
               <option>Health Insurance</option>
               <option>Car Payment</option>
               <option>Credit Card</option>
-              <option>Gas</option>
+              <option>Natural Gas</option>
               <option>Electric</option>
               <option>Cell Phone</option>
               <option>Cable</option>
@@ -195,7 +195,6 @@ var CreateBudgetComponent = React.createClass({
 
     return (
       <NavComponent>
-        <NavBarComponent/>
         <div className="row">
           <div className="col-md-offset-1 well col-md-10 col-xs-offset-1 col-xs-10 create-budget-container">
             <form onSubmit={this.handleSubmit}>

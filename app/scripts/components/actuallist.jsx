@@ -2,7 +2,6 @@ var React = require('react');
 
 var ActualCollection = require('../models/actual').ActualCollection;
 var NavComponent = require('./main.jsx').NavComponent;
-var NavBarComponent = require('./main.jsx').NavBarComponent;
 
 
 var ActualListComponent = React.createClass({
@@ -41,7 +40,6 @@ var ActualListComponent = React.createClass({
 
     return (
       <NavComponent>
-        <NavBarComponent/>
         <div className="row">
           <table className="col-xs-12 col-md-offset-2 col-md-8">
             <thead className="row">

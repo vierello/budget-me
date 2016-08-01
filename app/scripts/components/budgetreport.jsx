@@ -211,7 +211,7 @@ var TotalIncomeComponent = React.createClass({
     return(
       <div className="row">
         <span className="col-xs-2">Total</span>
-        <div className="col-xs-2">${(totalIncome).toFixed(2)}</div>
+        <div className="col-xs-2">{accounting.formatMoney(totalIncome)}</div>
       </div>
     )
   }
@@ -229,7 +229,7 @@ var TotalExpenseComponent = React.createClass({
     return(
       <div className="row">
         <span className="col-xs-2">Total</span>
-        <div className="col-xs-2">${(totalExpense).toFixed(2)}</div>
+        <div className="col-xs-2">{accounting.formatMoney(totalExpense)}</div>
       </div>
     )
   }
@@ -278,10 +278,10 @@ var BudgetReportComponent = React.createClass({
   calcActuals: function(budget){
     //console.log(this.state.totalBudgetIncome);
     var actuals = this.state.actual;
-    console.log(actuals);
+    //console.log(actuals);
     _.each(budget, function(budgetItem){
-      console.log(actuals.where({'type': budgetItem.type}).length);
-      console.log({'type': budgetItem.type});
+      //console.log(actuals.where({'type': budgetItem.type}).length);
+      //console.log({'type': budgetItem.type});
       var actualsSum = actuals.where({'type': budgetItem.type}).reduce(function(memo, actual){
         // console.log(actual.get('amount'));
         return memo + actual.get('amount');
@@ -296,27 +296,64 @@ var BudgetReportComponent = React.createClass({
     //console.log(this.state.actual);
     var incomeBudget = this.state.budget.get('income');
     var expenseBudget = this.state.budget.get('expense');
-    //console.log(incomeBudget);
+    console.log(expenseBudget);
     this.calcActuals(incomeBudget);
     this.calcActuals(expenseBudget);
+    console.log(expenseBudget);
+
+
 
     var incomeItems = incomeBudget.map(function(income, index){
+      function incomeSurplusDeficit(){
+        if((income.amount - income.actual) > 0){
+          return (
+            <span className="surplus col-xs-2">{accounting.formatMoney(income.amount - income.actual)}</span>
+          )
+        }else if((income.amount - income.actual) < 0){
+          return(
+            <span className="deficit col-xs-2">{accounting.formatMoney(income.amount - income.actual)}</span>
+          )
+        }else{
+          return (
+            <span className="col-xs-2">{accounting.formatMoney(0)}</span>
+            )
+        }
+      };
+
+
       //console.log(income);
       return (
         <div className="row" key={income.type}>
-          <span className="col-xs-2">{income.type}</span>
-          <span className="col-xs-2">${(income.amount).toFixed(2)}</span>
-          <span className="col-xs-2">${income.actual}</span>
+          <span className="budget-amount col-xs-2">{income.type}</span>
+          <span className="budget-amount col-xs-2">{accounting.formatMoney(income.amount)}</span>
+          <span className="budget-amount col-xs-2">{accounting.formatMoney(income.actual)}</span>
+          {incomeSurplusDeficit()}
         </div>
       )
     });
 
     var expenseItems = expenseBudget.map(function(expense, index){
+      function expenseSurplusDeficit(){
+        if((expense.amount - expense.actual) > 0){
+          return (
+            <span className="surplus col-xs-2">{accounting.formatMoney(expense.amount - expense.actual)}</span>
+          )
+        }else if((expense.amount - expense.actual) < 0){
+          return(
+            <span className="deficit col-xs-2">{accounting.formatMoney(expense.amount - expense.actual)}</span>
+          )
+        }else{
+          return(
+          <span className="col-xs-2">{accounting.formatMoney(0)}</span>
+          )
+        }
+      };
       return (
         <div className="row" key={expense.type}>
-          <span className="col-xs-2">{expense.type}</span>
-          <span className="col-xs-2">${(expense.amount).toFixed(2)}</span>
-          <span className="col-xs-2">${expense.actual}</span>
+          <span className="budget-amount col-xs-2">{expense.type}</span>
+          <span className="budget-amount col-xs-2">{accounting.formatMoney(expense.amount)}</span>
+          <span className="budget-amount col-xs-2">{accounting.formatMoney(expense.actual)}</span>
+          {expenseSurplusDeficit()}
         </div>
       )
     });
@@ -348,7 +385,6 @@ var BudgetReportComponent = React.createClass({
 
     return (
       <NavComponent>
-        <NavBarComponent/>
         <div className="row">
           <div className="col-md-offset-1 col-md-10">
             <h2>Income</h2>
@@ -361,6 +397,9 @@ var BudgetReportComponent = React.createClass({
                 </div>
                 <div className="col-xs-2">
                   <h4>Actual</h4>
+                </div>
+                <div className="col-xs-2">
+                  <h4>Surplus/(Deficit)</h4>
                 </div>
               </div>
             {incomeItems}
@@ -376,6 +415,9 @@ var BudgetReportComponent = React.createClass({
               </div>
               <div className="col-xs-2">
                 <h4>Actual</h4>
+              </div>
+              <div className="col-xs-2">
+                <h4>Surplus/(Deficit)</h4>
               </div>
             </div>
             {expenseItems}

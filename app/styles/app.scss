@@ -11,6 +11,9 @@ $icon-font-path: '../../node_modules/bootstrap-sass/assets/fonts/bootstrap/';
 *::before,
 *::after {
   box-sizing: border-box;
+}
+
+body {
   font-family: Open Sans;
 }
 
@@ -37,7 +40,6 @@ hr {
 }
 
 .wrapper-main {
-  //background-image: url('../images/table-background.png');
   background: rgba(0, 0, 0, .2);
   background-size: cover;
   background-repeat: no-repeat;
@@ -51,6 +53,7 @@ hr {
 
 .children-container {
   min-height: 650px;
+  padding: 15px;
 }
 
 .dollar-sign {
@@ -59,17 +62,7 @@ hr {
   top: 8px;
 }
 
-//App Header Styles ----------------------------------------------------
-
-.app-header {
-  background-size: cover;
-  h1 {
-    font-size: 80px;
-    color: white;
-    font-weight: bold;
-    text-align: center;
-  }
-}
+//Login Page Styles ---------------------------------------------------
 
 .app-login-header {
   background-size: cover;
@@ -81,77 +74,6 @@ hr {
     -webkit-text-stroke: 1px white;
   }
 }
-
-//App Footer Styles ----------------------------------------------------
-
-.app-footer {
-  position: relative;
-  bottom: 0px;
-  .created-by {
-    margin-left: 20px;
-    font-size: 20px;
-    color: white;
-  }
-  ul {
-    margin-bottom: 0px;
-  }
-}
-
-.social-media-links {
-  display: inline-block;
-  a {
-    height: 30px;
-    width: 30px;
-    color: black;
-  }
-  i {
-    height: 30px;
-    width: 30px;
-    color: black;
-  }
-}
-
-//Nav Bar Styles ------------------------------------------------------
-
-.nav-style {
-  background-color: #09397A;
-}
-
-.navbar-container {
-  padding: 0;
-}
-
-.nav-links {
-  color: white;
-  margin-left: 30px;
-  font-size: 24px;
-  text-align: center;
-}
-
-.navbar {
-  border: none;
-}
-
-.navbar-nav {
-  padding: 0;
-}
-
-.navbar-nav li {
-  text-align: center;
-  float: none;
-}
-
-.navbar-default .navbar-nav li a {
-  color: white;
-  display: block;
-  text-align: center;
-}
-
-.navbar-default .navbar-nav li a:hover {
-  color: white;
-}
-
-//Login Page Styles ---------------------------------------------------
 
 .login-form-container {
   background-color: rgba(200, 200, 200, .7);
@@ -305,8 +227,121 @@ hr {
 }
 
 
-//Signup Page Styles --------------------------------------------------
+//App Header Styles ----------------------------------------------------
 
+.nav-header {
+  margin-top: 12px;
+  h1 {
+    font-size: 70px;
+    color: #09397A;
+    font-weight: bold;
+    text-align: center;
+  }
+}
+
+//App Footer Styles ----------------------------------------------------
+
+.app-footer {
+  position: relative;
+  bottom: 0px;
+  .created-by {
+    margin-left: 20px;
+    font-size: 20px;
+    color: white;
+  }
+}
+
+.social-media {
+  margin-bottom: 15px;
+}
+
+.social-media-links {
+  display: inline-block;
+  a {
+    margin-right: 45px;
+  }
+  i {
+    height: 30px;
+    width: 30px;
+    color: white;
+  }
+}
+
+//Nav Bar Styles ------------------------------------------------------
+
+.nav-style {
+  background-color: #09397A;
+}
+
+.navbar-container {
+  padding: 0;
+}
+
+.nav-links {
+  color: white;
+  margin-left: 30px;
+  font-size: 24px;
+  text-align: center;
+}
+
+.navbar {
+  border: none;
+}
+
+.navbar-nav {
+  padding: 0;
+}
+
+.navbar-nav li {
+  text-align: center;
+  float: none;
+}
+
+.navbar-default .navbar-nav li a {
+  color: white;
+  display: block;
+  text-align: center;
+}
+
+.navbar-default .navbar-nav li a:hover {
+  color: white;
+}
+
+.icon {
+  display: block;
+  margin-top: 10px;
+}
+
+.profile-display {
+  padding: 0px;
+  height: 100px;
+  background-color: orange;
+  .profile-display-heading {
+    float: right;
+    display: table;
+    line-height: 100px;
+    margin-right: 30px;
+  }
+  .main-page-heading {
+    font-size: 40px;
+    line-height: 100px;
+    vertical-align: middle;
+    text-align: center;
+    margin: 0;
+    padding-right: 20px;
+    color: white;
+    text-transform: capitalize;
+    display: table-cell;;
+  }
+  a {
+  color: white;
+  font-size: 25px;
+  display: table-cell;
+  vertical-align: middle;
+  text-align: center;
+  text-decoration: none;
+  }
+}
 
 
 //Home Page Styles ----------------------------------------------------
@@ -320,19 +355,6 @@ hr {
 
 .main-page-layout {
   padding: 0;
-}
-
-.main-page-heading {
-  text-align: center;
-  font-size: 60px;
-  color: white;
-  font-weight: bold;
-  text-transform: capitalize;
-  background-color: #09397A;
-}
-
-.s {
-  text-transform: lowercase;
 }
 
 .actual-title {
@@ -369,6 +391,10 @@ hr {
 .add-view-buttons {
   margin-top: 10px;
   font-size: 18px;
+}
+
+.view-button {
+  background-color: #09397A;
 }
 
 //Create Budget Page Styles ------------------------------------------
@@ -441,6 +467,14 @@ hr {
 
 //Budget Report Page Styles ------------------------------------------
 
+  .surplus {
+    color: green;
+  }
+
+  .deficit {
+    color: red;
+  }
+
 //Goals Page Styles --------------------------------------------------
 
 .goal-title{
@@ -452,19 +486,20 @@ hr {
   color: white;
 }
 
+.goal-form {
+  margin-top: 20px;
+}
+
+.goal-input {
+  float: right;
+  width: 78%;
+}
+
 //Profile Page Styles ------------------------------------------------
-
-.profile-form {
-  margin: 0 10px;
-}
-
-.profile-input-group {
-  width: 100%;
-}
 
 .profile-input {
   float: right;
-  width: 80%;
+  width: 70%;
 }
 
 .save-profile-button {
@@ -484,7 +519,6 @@ hr {
 .profile-picture-input {
   height: 150px;
   width: 200px;
-  font-size: 18px;
 }
 
 .profile-picture-input::-webkit-input-placeholder {
