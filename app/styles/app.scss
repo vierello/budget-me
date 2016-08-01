@@ -499,7 +499,7 @@ hr {
 
 .profile-input {
   float: right;
-  width: 70%;
+  width: 65%;
 }
 
 .save-profile-button {
@@ -509,32 +509,6 @@ hr {
     width: 200px;
     font-size: 18px;
   }
-}
-
-.profile-picture-label,
-.profile-picture-input {
-  display: block;
-}
-
-.profile-picture-input {
-  height: 150px;
-  width: 200px;
-}
-
-.profile-picture-input::-webkit-input-placeholder {
-text-align: center;
-}
-
-.profile-picture-input:-moz-placeholder { /* Firefox 18- */
-text-align: center;
-}
-
-.profile-picture-input::-moz-placeholder {  /* Firefox 19+ */
-text-align: center;
-}
-
-.profile-picture-input:-ms-input-placeholder {
-text-align: center;
 }
 
 

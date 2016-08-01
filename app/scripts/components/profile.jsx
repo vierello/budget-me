@@ -2,9 +2,16 @@ var React = require('react');
 
 var NavComponent = require('./main.jsx').NavComponent;
 var User = require('../models/users').User;
+var File = require('../models/files').File;
 
 
 var ProfileForm = React.createClass({
+  getInitialState: function(){
+    return {
+      picUrl: ''
+    }
+  },
+
   handleFirstName: function(e){
     this.props.user.set('firstName', e.target.value)
   },
@@ -25,8 +32,19 @@ var ProfileForm = React.createClass({
     this.props.user.set('zip', e.target.value)
   },
 
-  handlePicture: function(e){
-    this.props.user.set('picture', e.target.value)
+  handlePictureName: function(e){
+    this.props.user.set('pictureName', e.target.value)
+  },
+
+  handleImage: function(e){
+    var self = this;
+    var profilePic = e.target.files[0];
+    var file = new File();
+    file.set('name', profilePic.name);
+    file.set('data', profilePic);
+    file.save().done(function(){
+      self.setState({'picUrl': file.get('url')});
+    });
   },
 
   handleSubmit: function(e){
@@ -37,7 +55,7 @@ var ProfileForm = React.createClass({
   render: function(){
     console.log(this.props.user);
     return (
-    <form onSubmit={this.handleSubmit} className="profile-form">
+    <form onSubmit={this.handleSubmit} className="profile-form" action='/files/' encode="multipart/form-data">
       <h2>Profile Information</h2>
       <div className="row">
         <div className="col-xs-12 col-md-6 form-group">
@@ -64,7 +82,8 @@ var ProfileForm = React.createClass({
         </div>
         <div className="col-xs-12 col-md-6 form-group">
           <label className="profile-picture-label" className="control-label" htmlFor="profile-picture">Picture: </label>
-          <input onChange={this.handlePicture} className="profile-picture-input control-input" id="profile-picture" type="url" placeholder="Image"/>
+          <input onChange={this.handlePictureName} className="profile-picture-input control-input" id="profile-picture" type="text" placeholder="Image Name"/>
+          <input onChange={this.handleImage} type="file" id="profile-picture-file"/>
         </div>
         <div className="row">
           <div className="col-xs-12">

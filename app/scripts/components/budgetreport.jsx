@@ -9,192 +9,6 @@ var ActualCollection = require('../models/actual').ActualCollection;
 var Actual = require('../models/actual').Actual;
 
 
-// var BudgetIncomeComponent = React.createClass({
-//   render: function(){
-//     var budget = this.props.budget;
-//     var budgetList = budget.get('income').map(function(incomeItem, index){
-//         return (
-//           <div key={index} className="row">
-//             <span className="col-sm-3">{incomeItem.type}</span>
-//             <span className="col-sm-3">${(incomeItem.amount).toFixed(2)}</span>
-//           </div>
-//         )
-//     });
-//
-//     return (
-//       <div>
-//         <div className="row">
-//           <h4 className="col-sm-3">Type</h4>
-//           <h4 className="col-sm-3">Budget</h4>
-//         </div>
-//         {budgetList}
-//       </div>
-//     )
-//   }
-// });
-
-//var BudgetExpenseComponent = React.createClass({
-  // componentWillMount: function(){
-  //   var self = this;
-  //   //var actualExpense = this.props.actualCollection;
-  //   var mortgageRentCollection = new ActualCollection();
-  //   var healthInsuranceCollection = new ActualCollection();
-  //   var carPaymentCollection = new ActualCollection();
-  //   var creditCardCollection = new ActualCollection();
-  //   var gasCollection = new ActualCollection();
-  //   var electricCollection = new ActualCollection();
-  //   var cellPhoneCollection = new ActualCollection();
-  //   var cableCollection = new ActualCollection();
-  //   var studentLoanCollection = new ActualCollection();
-  //   var carInsuranceCollection = new ActualCollection();
-  //   var groceriesCollection = new ActualCollection();
-  //   var waterCollection = new ActualCollection();
-  //   var garbageCollection = new ActualCollection();
-  //   var subscriptionCollection = new ActualCollection();
-  //   var fuelCollection = new ActualCollection();
-  //   var otherCollection = new ActualCollection();
-  //
-  //   //console.log(actualExpenseCollection);
-  //   mortgageRentCollection.where({
-  //     "type": "Mortgage/Rent"
-  //   }).fetch().done(function(){
-  //     //console.log(actualExpenseCollection);
-  //     self.setState({mortgageRent: mortgageRentCollection});
-  //     //console.log(self.state.mortgageRent);
-  //   });
-  //   healthInsuranceCollection.where({
-  //     "type": "Health Insurance"
-  //   }).fetch().done(function(){
-  //     //console.log(actualExpenseCollection);
-  //     self.setState({healthInsurance: healthInsuranceCollection});
-  //     //console.log(self.state.healthInsurance);
-  //   });
-  //   carPaymentCollection.where({
-  //     "type": "Car Payment"
-  //   }).fetch().done(function(){
-  //     //console.log(actualExpenseCollection);
-  //     self.setState({carPayment: carPaymentCollection});
-  //     //console.log(self.state.carPayment);
-  //   });
-  //   creditCardCollection.where({
-  //     "type": "Credit Card"
-  //   }).fetch().done(function(){
-  //     //console.log(actualExpenseCollection);
-  //     self.setState({creditCard: creditCardCollection});
-  //     //console.log(self.state.creditCard);
-  //   });
-  //   gasCollection.where({
-  //     "type": "Gas"
-  //   }).fetch().done(function(){
-  //     //console.log(actualExpenseCollection);
-  //     self.setState({gas: gasCollection});
-  //     //console.log(self.state.gas);
-  //   });
-  //   electricCollection.where({
-  //     "type": "Electric"
-  //   }).fetch().done(function(){
-  //     //console.log(actualExpenseCollection);
-  //     self.setState({electric: electricCollection});
-  //     //console.log(self.state.electric);
-  //   });
-  //   cellPhoneCollection.where({
-  //     "type": "Cell Phone"
-  //   }).fetch().done(function(){
-  //     //console.log(actualExpenseCollection);
-  //     self.setState({cellPhone: cellPhoneCollection});
-  //     //console.log(self.state.cellPhone);
-  //   });
-  //   cableCollection.where({
-  //     "type": "Cable"
-  //   }).fetch().done(function(){
-  //     //console.log(actualExpenseCollection);
-  //     self.setState({cable: cableCollection});
-  //     //console.log(self.state.cable);
-  //   });
-  //   studentLoanCollection.where({
-  //     "type": "Student Loan"
-  //   }).fetch().done(function(){
-  //     //console.log(actualExpenseCollection);
-  //     self.setState({studentLoan: studentLoanCollection});
-  //     //console.log(self.state.studentLoan);
-  //   });
-  //   carInsuranceCollection.where({
-  //     "type": "Car Insurance"
-  //   }).fetch().done(function(){
-  //     //console.log(actualExpenseCollection);
-  //     self.setState({carInsurance: carInsuranceCollection});
-  //     //console.log(self.state.carInsurance);
-  //   });
-  //   groceriesCollection.where({
-  //     "type": "Groceries"
-  //   }).fetch().done(function(){
-  //     //console.log(actualExpenseCollection);
-  //     self.setState({groceries: groceriesCollection});
-  //     //console.log(self.state.groceries);
-  //   });
-  //   waterCollection.where({
-  //     "type": "Water"
-  //   }).fetch().done(function(){
-  //     //console.log(actualExpenseCollection);
-  //     self.setState({water: waterCollection});
-  //     //console.log(self.state.water);
-  //   });
-  //   garbageCollection.where({
-  //     "type": "Garbage"
-  //   }).fetch().done(function(){
-  //     //console.log(actualExpenseCollection);
-  //     self.setState({garbage: garbageCollection});
-  //     //console.log(self.state.garbage);
-  //   });
-  //   subscriptionCollection.where({
-  //     "type": "Subscription"
-  //   }).fetch().done(function(){
-  //     //console.log(actualExpenseCollection);
-  //     self.setState({subscription: subscriptionCollection});
-  //     //console.log(self.state.subscription);
-  //   });
-  //   fuelCollection.where({
-  //     "type": "Fuel"
-  //   }).fetch().done(function(){
-  //     //console.log(actualExpenseCollection);
-  //     self.setState({fuel: fuelCollection});
-  //     //console.log(self.state.fuel);
-  //   });
-  //   otherCollection.where({
-  //     "type": "Other"
-  //   }).fetch().done(function(){
-  //     //console.log(actualExpenseCollection);
-  //     self.setState({other: otherCollection});
-  //     //console.log(self.state.other);
-  //   });
-  // },
-//
-//   render: function(){
-//     var self = this;
-//     //console.log(this.props);
-//     var budget = this.props.budget;
-//     var budgetList = budget.get('expense').map(function(expenseItem, index){
-//         return (
-//           <div key={index} className="row">
-//             <span className="col-sm-3">{expenseItem.type}</span>
-//             <span className="col-sm-3">${(expenseItem.amount).toFixed(2)}</span>
-//           </div>
-//         )
-//     });
-//
-//     console.log(budget);
-//     return (
-//       <div>
-//         <div className="row">
-//           <h4 className="col-sm-3">Type</h4>
-//           <h4 className="col-sm-3">Budget</h4>
-//         </div>
-//         {budgetList}
-//       </div>
-//     )
-//   }
-// });
-
 var TotalIncomeComponent = React.createClass({
 
   render: function(){
@@ -235,14 +49,6 @@ var TotalExpenseComponent = React.createClass({
   }
 });
 
-// var NetIncomeComponent = React.createClass({
-//   render: function(){
-//     return (
-//       <TotalIncomeComponent/>
-//     )
-//   }
-// });
-
 var BudgetReportComponent = React.createClass({
   getInitialState: function(){
     return {
@@ -266,7 +72,7 @@ var BudgetReportComponent = React.createClass({
        //console.log(actualPromise);
 
        //console.warn(actualCollection);
-      //  console.warn(budgetCollection[0]);
+       //console.warn(budgetCollection[0]);
 
       self.setState({
         budget: budgetCollection.first(),
@@ -296,10 +102,10 @@ var BudgetReportComponent = React.createClass({
     //console.log(this.state.actual);
     var incomeBudget = this.state.budget.get('income');
     var expenseBudget = this.state.budget.get('expense');
-    console.log(expenseBudget);
+    //console.log(expenseBudget);
     this.calcActuals(incomeBudget);
     this.calcActuals(expenseBudget);
-    console.log(expenseBudget);
+    //console.log(expenseBudget);
 
 
 
@@ -357,31 +163,6 @@ var BudgetReportComponent = React.createClass({
         </div>
       )
     });
-
-    // var budgets = this.state.budgetCollection;
-    // var budget = budgets.map(function(budgetItem, index){
-    //
-    //   var budgetIncome = budgetItem.get('income');
-    //   var income = budgetIncome.map(function(incomeItem, index){
-    //     console.log('incomes', incomeItem);
-    //     return (
-    //       <div key={index} className="row">
-    //         <span className="col-sm-3">{incomeItem.type}</span>
-    //         <span className="col-sm-3">${incomeItem.amount}</span>
-    //       </div>
-    //     )
-    //   });
-    //
-    //   var budgetExpense = budgetItem.get('expense');
-    //   var expense = budgetExpense.map(function(expenseItem, index){
-    //     console.log('expenses', expenseItem);
-    //     return (
-    //       <div key={index} className="row">
-    //         <span className="col-sm-3">{expenseItem.type}</span>
-    //         <span className="col-sm-3">${expenseItem.amount}</span>
-    //       </div>
-    //     )
-    //   });
 
     return (
       <NavComponent>

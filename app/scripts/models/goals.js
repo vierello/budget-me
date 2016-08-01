@@ -14,7 +14,10 @@ var Goal = PointerFieldModel.extend({
     'amount': '',
     'startDate': '',
     'endDate': ''
-  }
+  },
+  parse: function(data){
+    return data.results
+  },
 });
 
 var GoalCollection = Backbone.Collection.extend({

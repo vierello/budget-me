@@ -3,6 +3,25 @@ var React = require('react');
 var NavComponent = require('./main.jsx').NavComponent;
 var Goal = require('../models/goals').Goal;
 
+
+var DisplayGoalComponent = React.createClass({
+  componentWillMount: function(){
+    this.props.goal.fetch();
+
+  },
+
+  render: function(){
+    var goal = this.props.goal;
+    console.log(goal);
+
+    return (
+      <div className="row">
+        {goal.get('name')}
+      </div>
+    )
+  }
+});
+
 var CreateGoalComponent = React.createClass({
   getInitialState: function(){
     return {
@@ -64,6 +83,7 @@ var CreateGoalComponent = React.createClass({
             </form>
           </div>
         </div>
+        <DisplayGoalComponent goal={this.state.goal}/>
       </NavComponent>
     )
   }
