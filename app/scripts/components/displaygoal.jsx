@@ -1,4 +1,6 @@
 var React = require('react');
+var accounting = require('../accounting/accounting.min.js').accounting;
+console.log(accounting);
 
 var NavComponent = require('./main.jsx').NavComponent;
 var Goal = require('../models/goals').Goal;
@@ -52,7 +54,7 @@ var DisplayGoalComponent = React.createClass({
           var daysSinceStart = (todayUTC - startDateUTC) / millisecondsPerDay;
           var totalDays = daysInGoal();
           var timeElapsed = daysSinceStart / totalDays;
-          console.log(timeElapsed * 100);
+          //console.log(timeElapsed * 100);
           if(timeElapsed < 100){
             var style = {
               width: timeElapsed * 100,

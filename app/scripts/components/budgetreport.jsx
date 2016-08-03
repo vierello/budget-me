@@ -1,5 +1,6 @@
 var React = require('react');
 var _ = require('underscore');
+var accounting = require('../accounting/accounting.min.js').accounting;
 
 var NavComponent = require('./main.jsx').NavComponent;
 var Budget = require('../models/budget').Budget;
