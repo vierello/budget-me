@@ -1,6 +1,5 @@
 var React = require('react');
 var accounting = require('../accounting/accounting.min.js').accounting;
-console.log(accounting);
 
 var NavComponent = require('./main.jsx').NavComponent;
 var Goal = require('../models/goals').Goal;
@@ -57,7 +56,7 @@ var DisplayGoalComponent = React.createClass({
           //console.log(timeElapsed * 100);
           if(timeElapsed < 100){
             var style = {
-              width: timeElapsed * 100,
+              width: timeElapsed * 100 + '%',
               minWidth: '2px'
             }
             return (
@@ -85,9 +84,10 @@ var DisplayGoalComponent = React.createClass({
         }, 0);
 
         var goalAmountPortion = (goalProgressList / goal.get('amount')) * 100;
+        console.log(goalAmountPortion);
         if(goalAmountPortion < 100){
           var styles = {
-            width: goalAmountPortion,
+            width: goalAmountPortion + '%',
             minWidth: '2px'
           }
           return (
@@ -103,19 +103,25 @@ var DisplayGoalComponent = React.createClass({
         }
       }
       return (
-        <div className="well" key={index}>
-          <div className="goal-display-title-bar">
-            <h3 className="goal-display-title">{goal.get('name')}</h3>
-            <p className="pull-right">Goal: {accounting.formatMoney(goal.get('amount'))}</p>
+        <div className="row" key={index}>
+          <div className="col-md-offset-1 col-md-10 col-xs-12 well">
+            <div className="row">
+              <div className="goal-row col-xs-12">
+                <div className="goal-display-title-bar">
+                  <h3 className="well goal-display-title">{goal.get('name')}</h3>
+                  <p className="pull-right">Goal: {accounting.formatMoney(goal.get('amount'))}</p>
+                </div>
+              </div>
+            </div>
+            <div>{goalTimeBar()}</div>
+            <div>{amountBar()}</div>
           </div>
-          <div>{goalTimeBar()}</div>
-          <div>{amountBar()}</div>
         </div>
       )
     })
     return (
       <div className="row">
-        <div className="col-md-offset-1 goal-display col-md-10 col-xs-12">
+        <div className="goal-display">
           {goalList}
         </div>
       </div>

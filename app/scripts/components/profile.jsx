@@ -45,6 +45,7 @@ var ProfileForm = React.createClass({
     file.save().done(function(){
       console.log(file);
       self.setState({'picUrl': file.get('url')});
+      localStorage.setItem('picUrl', file.get('url'));
     });
   },
 

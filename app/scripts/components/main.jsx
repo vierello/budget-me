@@ -4,7 +4,9 @@ var Actual = require('../models/actual').Actual;
 var ActualCollection = require('../models/actual').ActualCollection;
 var GoalProgress = require('../models/goalprogress').GoalProgress;
 var GoalCollection = require('../models/goals').GoalCollection;
-// var DisplayGoalComponent = require('./creategoal.jsx').DisplayGoalComponent;
+var User = require('../models/users').User;
+var BudgetReportComponent = require('./budgetreport.jsx').BudgetReportComponent;
+var DisplayGoalComponent = require('./displaygoal.jsx').DisplayGoalComponent;
 
 
 var GoalInputComponent = React.createClass({
@@ -49,7 +51,7 @@ var GoalInputComponent = React.createClass({
     //console.log(goals);
     return (
       <div className="row">
-        <form onSubmit={this.handleSubmit} className="col-md-4 well col-xs-12">
+        <form onSubmit={this.handleSubmit} className="col-md-12 well col-xs-12">
             <h2 className="goal-progress-title well">Goal Contribution</h2>
             <div className="goals-input col-md-8 col-xs-8">
               <select onChange={this.handleType} className="goal-progress-input form-control">
@@ -104,7 +106,7 @@ var ActualInputComponent = React.createClass({
   render: function(){
     return (
       <div className="row">
-        <form onSubmit={this.handleSubmit} className="col-md-4 well col-xs-12">
+        <form onSubmit={this.handleSubmit} className="col-md-12 well col-xs-12">
             <h2 className="actual-title well">Actual Expense</h2>
             <div className="actual-input col-md-8 col-xs-8">
               <select onChange={this.handleType} className="actual-expense-input form-control">
@@ -148,15 +150,22 @@ var ActualInputComponent = React.createClass({
 var ProfileDisplayComponent = React.createClass({
   handleSignOut: function(){
     localStorage.clear();
-    //self.props.router.navigate('login/', {trigger: true})
   },
 
   render: function(){
+
+    // var users = user.map(function(userItem, index){
+    //   return userItem;
+    // });
+
     return (
       <div className="row">
         <div className="profile-display col-xs-12">
           <div className="profile-display-heading">
+            <img className="profile-image" src={localStorage.getItem('picUrl')}/>
             <h1 className="main-page-heading">{localStorage.getItem('username')}</h1>
+          </div>
+          <div className="profile-sign-out">
             <a href="#login/" className="main-page-sign-out"><span onClick={this.handleSignOut}>Sign Out</span></a>
           </div>
         </div>
@@ -171,7 +180,7 @@ var NavComponent = React.createClass({
       <div>
         <div className="row">
           <div className="col-xs-12">
-            <div className="row">
+            <div className="row main-row">
               <div className="nav-sidebar col-md-2 col-xs-12">
                 <header className="well nav-header">
                   <h1>Budget</h1>
@@ -258,8 +267,29 @@ var MainComponent = React.createClass({
   render: function(){
     return (
       <NavComponent router={this.props.router}>
-        <ActualInputComponent actualExpense={this.state.actual}/>
-        <GoalInputComponent goalCollection={this.state.goals} goalProgress={this.state.goalProgress}/>
+        <div className="row">
+          <div className="col-md-offset-1 col-md-10 col-xs-12 dash-well-color well">
+            <p className="dashboard-header"></p>
+            <div className="col-md-5 col-xs-12">
+              <ActualInputComponent actualExpense={this.state.actual}/>
+            </div>
+            <div className=" col-md-offset-1 col-md-5 col-xs-12">
+              <GoalInputComponent goalCollection={this.state.goals} goalProgress={this.state.goalProgress}/>
+            </div>
+          </div>
+        </div>
+        <div className="row">
+          <div className="col-md-offset-1 col-md-10 col-xs-12 dashboard-padding">
+            <div className="col-md-6 col-sm-12 col-xs-12 dash-well-color well">
+              <p className="dashboard-header">Budget Report</p>
+              <BudgetReportComponent/>
+            </div>
+            <div className="col-md-6 col-sm-12 col-xs-12 dash-well-color well">
+              <p className="dashboard-header">Goals</p>
+              <DisplayGoalComponent/>
+            </div>
+          </div>
+        </div>
       </NavComponent>
     )
   }

@@ -168,9 +168,8 @@ var BudgetReportComponent = React.createClass({
     });
 
     return (
-      <NavComponent>
         <div className="row">
-          <div className="col-md-offset-1 col-md-10">
+          <div className="col-md-offset-1 well col-md-10">
             <h2>Income</h2>
               <div className="row">
                 <div className="col-xs-2">
@@ -209,11 +208,10 @@ var BudgetReportComponent = React.createClass({
             <TotalExpenseComponent budget={this.state.budget} totalBudgetExpense={this.state.totalBudgetExpense}/>
           </div>
         </div>
-      </NavComponent>
     )
   }
 });
 
 module.exports = {
-  'BudgetReportComponent': BudgetReportComponent
+  'BudgetReportComponent': BudgetReportComponent,
 };

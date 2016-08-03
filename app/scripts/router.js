@@ -6,7 +6,7 @@ var LoginComponent = require('./components/login.jsx').LoginComponent;
 var SignupComponent = require('./components/signup.jsx').SignupComponent;
 var CreateBudgetComponent = require('./components/createbudget.jsx').CreateBudgetComponent;
 var MainComponent = require('./components/main.jsx').MainComponent;
-var BudgetReportComponent = require('./components/budgetreport.jsx').BudgetReportComponent;
+var BudgetReportDisplayComponent = require('./components/budgetreportdisplay.jsx').BudgetReportDisplayComponent;
 var CreateGoalComponent = require('./components/creategoal.jsx').CreateGoalComponent;
 var ActualListComponent = require('./components/actuallist.jsx').ActualListComponent;
 var ProfileComponent = require('./components/profile.jsx').ProfileComponent;
@@ -71,7 +71,7 @@ var Router = Backbone.Router.extend({
 
   budgetReport: function(){
     ReactDOM.render(
-      React.createElement(BudgetReportComponent, {router: this}),
+      React.createElement(BudgetReportDisplayComponent, {router: this}),
       document.getElementById('container')
     )
     jQuery('#container').addClass('wrapper-main');
