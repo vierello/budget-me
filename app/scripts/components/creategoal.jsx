@@ -33,7 +33,7 @@ var CreateGoalComponent = React.createClass({
     e.preventDefault();
     var self = this;
     var user = JSON.parse(localStorage.getItem('user'));
-    console.log(this.state.goal);
+    //console.log(this.state.goal);
     this.state.goal.setPointer('user', user, '_User')
     this.state.goal.save().done(function(){
       self.props.router.navigate('main/', {trigger: true});

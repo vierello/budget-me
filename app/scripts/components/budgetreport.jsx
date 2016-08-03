@@ -71,7 +71,7 @@ var BudgetReportComponent = React.createClass({
     var actualPromise = actualCollection.fetch()
 
     Promise.all([budgetPromise, actualPromise]).then(function(){
-       console.log(budgetPromise);
+       //console.log(budgetPromise);
        //console.log(actualPromise);
 
        //console.warn(actualCollection);
@@ -102,7 +102,7 @@ var BudgetReportComponent = React.createClass({
   },
 
   render: function(){
-  console.log(this.state);
+  //console.log(this.state);
     var incomeBudget = this.state.budget.get('income');
     var expenseBudget = this.state.budget.get('expense');
     //console.log(expenseBudget);

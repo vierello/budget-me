@@ -84,7 +84,7 @@ var DisplayGoalComponent = React.createClass({
         }, 0);
 
         var goalAmountPortion = (goalProgressList / goal.get('amount')) * 100;
-        console.log(goalAmountPortion);
+        //console.log(goalAmountPortion);
         if(goalAmountPortion < 100){
           var styles = {
             width: goalAmountPortion + '%',

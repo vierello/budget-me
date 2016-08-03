@@ -26,7 +26,7 @@ var App = React.createClass({
 
 var Flipper = React.createClass({
     render: function() {
-      console.log(this.props);
+      //console.log(this.props);
         return (
           <div className={"flipper-container " + this.props.orientation}>
             <div className={"flipper" + (this.props.flipped ? " flipped" : "")}>
@@ -56,7 +56,7 @@ var Back = React.createClass({
 
 var LoginComponent = React.createClass({
   userLogin: function(e){
-    console.log(this.props);
+    //console.log(this.props);
     //console.log('test');
       e.preventDefault();
       var username = jQuery('#inputUsername1').val();

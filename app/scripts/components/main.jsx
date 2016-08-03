@@ -28,7 +28,7 @@ var GoalInputComponent = React.createClass({
   handleSubmit: function(e){
     e.preventDefault();
     var user = JSON.parse(localStorage.getItem('user'));
-    console.log(user);
+    //console.log(user);
     this.props.goalProgress.setPointer('user', user, '_User');
     //console.log(this.props.goalProgress);
     this.props.goalProgress.save();
@@ -43,7 +43,7 @@ var GoalInputComponent = React.createClass({
   render: function(){
     var goals = this.props.goalCollection;
     var goalItem = goals.map(function(goal, index){
-      console.log(goal);
+      //console.log(goal);
       return (
         <option key={index}>{goal.get('name')}</option>
       )
@@ -90,9 +90,9 @@ var ActualInputComponent = React.createClass({
   handleSubmit: function(e){
     e.preventDefault();
     var user = JSON.parse(localStorage.getItem('user'));
-    console.log(user);
+    //console.log(user);
     this.props.actualExpense.setPointer('user', user, '_User');
-    console.log(this.props.actualExpense);
+    //console.log(this.props.actualExpense);
     this.props.actualExpense.save();
     this.clearForm();
   },
@@ -153,17 +153,15 @@ var ProfileDisplayComponent = React.createClass({
   },
 
   render: function(){
-
-    // var users = user.map(function(userItem, index){
-    //   return userItem;
-    // });
+    var user = JSON.parse(localStorage.getItem('user'));
+    //console.log('user', user);
 
     return (
       <div className="row">
         <div className="profile-display col-xs-12">
           <div className="profile-display-heading">
-            <img className="profile-image" src={localStorage.getItem('picUrl')}/>
-            <h1 className="main-page-heading">{localStorage.getItem('username')}</h1>
+            <img className="profile-image" src={user.profileImage}/>
+            <h1 className="main-page-heading">{user.username}</h1>
           </div>
           <div className="profile-sign-out">
             <a href="#login/" className="main-page-sign-out"><span onClick={this.handleSignOut}>Sign Out</span></a>
