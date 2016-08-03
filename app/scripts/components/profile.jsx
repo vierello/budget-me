@@ -39,17 +39,18 @@ var ProfileForm = React.createClass({
   handleImage: function(e){
     var self = this;
     var profilePic = e.target.files[0];
-    console.log(profilePic);
     var file = new File();
     file.set('name', profilePic.name);
     file.set('data', profilePic);
     file.save().done(function(){
+      console.log(file);
       self.setState({'picUrl': file.get('url')});
     });
   },
 
   handleSubmit: function(e){
     e.preventDefault();
+    this.props.user.set('profileImage', this.state.picUrl);
     this.props.user.save();
   },
 

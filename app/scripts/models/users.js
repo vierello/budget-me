@@ -7,7 +7,7 @@ var User = Backbone.Model.extend({
   urlRoot: 'https://av-awesome-server.herokuapp.com/users',
   toJSON: function(){
     var data = _.clone(this.attributes);
-    console.log(data.password);
+    //console.log(data.password);
     delete data.createdAt;
     delete data.updatedAt;
     return data
@@ -41,7 +41,7 @@ var User = Backbone.Model.extend({
     });
   },
 
-  restore() {
+  restore: function(){
     var userData = JSON.parse(localStorage.getItem('user'));
     var user = new User(userData);
     this._setAuthHeaders(userData.sessionToken);
