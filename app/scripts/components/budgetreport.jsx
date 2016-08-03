@@ -31,6 +31,7 @@ var TotalIncomeComponent = React.createClass({
   }
 });
 
+
 var TotalExpenseComponent = React.createClass({
   render: function(){
     var budget = this.props.budget;
@@ -48,6 +49,7 @@ var TotalExpenseComponent = React.createClass({
     )
   }
 });
+
 
 var BudgetReportComponent = React.createClass({
   getInitialState: function(){
@@ -68,7 +70,7 @@ var BudgetReportComponent = React.createClass({
     var actualPromise = actualCollection.fetch()
 
     Promise.all([budgetPromise, actualPromise]).then(function(){
-       //console.log(budgetPromise);
+       console.log(budgetPromise);
        //console.log(actualPromise);
 
        //console.warn(actualCollection);
@@ -99,7 +101,7 @@ var BudgetReportComponent = React.createClass({
   },
 
   render: function(){
-    //console.log(this.state.actual);
+  console.log(this.state);
     var incomeBudget = this.state.budget.get('income');
     var expenseBudget = this.state.budget.get('expense');
     //console.log(expenseBudget);
@@ -132,7 +134,7 @@ var BudgetReportComponent = React.createClass({
         <div className="row" key={income.type}>
           <span className="budget-amount col-xs-2">{income.type}</span>
           <span className="budget-amount col-xs-2">{accounting.formatMoney(income.amount)}</span>
-          <span className="budget-amount col-xs-2">{accounting.formatMoney(income.actual)}</span>
+          <a href="#"><span className="budget-amount col-xs-2">{accounting.formatMoney(income.actual)}</span></a>
           {incomeSurplusDeficit()}
         </div>
       )
@@ -158,7 +160,7 @@ var BudgetReportComponent = React.createClass({
         <div className="row" key={expense.type}>
           <span className="budget-amount col-xs-2">{expense.type}</span>
           <span className="budget-amount col-xs-2">{accounting.formatMoney(expense.amount)}</span>
-          <span className="budget-amount col-xs-2">{accounting.formatMoney(expense.actual)}</span>
+          <a href="#"><span className="budget-amount col-xs-2">{accounting.formatMoney(expense.actual)}</span></a>
           {expenseSurplusDeficit()}
         </div>
       )

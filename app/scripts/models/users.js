@@ -3,10 +3,11 @@ var _ = require('underscore');
 
 
 var User = Backbone.Model.extend({
+  idAttribute: 'objectId',
   urlRoot: 'https://av-awesome-server.herokuapp.com/users',
   toJSON: function(){
     var data = _.clone(this.attributes);
-    //delete data.objectId;
+    console.log(data.password);
     delete data.createdAt;
     delete data.updatedAt;
     return data
@@ -52,7 +53,6 @@ var User = Backbone.Model.extend({
   }
 
 });
-
 
 
 module.exports = {

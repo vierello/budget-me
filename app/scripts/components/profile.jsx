@@ -8,7 +8,7 @@ var File = require('../models/files').File;
 var ProfileForm = React.createClass({
   getInitialState: function(){
     return {
-      picUrl: ''
+      'picUrl': ''
     }
   },
 
@@ -39,6 +39,7 @@ var ProfileForm = React.createClass({
   handleImage: function(e){
     var self = this;
     var profilePic = e.target.files[0];
+    console.log(profilePic);
     var file = new File();
     file.set('name', profilePic.name);
     file.set('data', profilePic);
@@ -53,7 +54,7 @@ var ProfileForm = React.createClass({
   },
 
   render: function(){
-    console.log(this.props.user);
+    //console.log(this.props.user);
     return (
     <form onSubmit={this.handleSubmit} className="profile-form" action='/files/' encode="multipart/form-data">
       <h2>Profile Information</h2>

@@ -397,6 +397,33 @@ hr {
   background-color: #09397A;
 }
 
+.goal-progress-title {
+  display: inline-block;
+  position: relative;
+  font-size: 30px;
+  margin: 0;
+  background-color: #09397A;
+  color: white;
+}
+
+.goals-input {
+  padding: 0px;
+  margin-top: 16px;
+  font-size: 18px;
+}
+
+.goal-progress-input {
+  width: 90%;
+  line-height: 30px;
+  border-radius: 5px;
+  font-size: 18px;
+}
+
+.goal-progress-box {
+  height: 34px;
+  width: 100%;
+}
+
 //Create Budget Page Styles ------------------------------------------
 
 .create-budget-container {
@@ -492,7 +519,52 @@ hr {
 
 .goal-input {
   float: right;
-  width: 78%;
+  width: 75%;
+}
+
+.goal-display {
+  padding: 0;
+  font-size: 18px;
+}
+
+.goal-display-title-bar {
+  line-height: 65px;
+  height: 65px;
+}
+
+.goal-display-title {
+  display: inline-block;
+  font-size: 40px;
+}
+
+.goal-progress {
+  height: 30px;
+  margin-bottom: 5px;
+  border-radius: 0;
+  border: 1px solid #E2E2E2;
+}
+
+.time-goal-text {
+  color: gray;
+  font-size: 18px;
+  text-align: center;
+  line-height: 30px;
+  z-index: 100;
+}
+
+.amount-progress {
+  height: 30px;
+  margin-bottom: 0;
+  border-radius: 0;
+  border: 1px solid #E2E2E2;
+}
+
+.amount-goal-text {
+  color: gray;
+  font-size: 18px;
+  text-align: center;
+  line-height: 30px;
+  z-index: 100;
 }
 
 //Profile Page Styles ------------------------------------------------
@@ -534,5 +606,8 @@ th {
     h1{
       font-size: 80px;
     }
+  }
+  .create-goal-group{
+    display: inline-block;
   }
 }

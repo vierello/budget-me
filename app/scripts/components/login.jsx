@@ -158,7 +158,7 @@ var SignupComponent = React.createClass({
             </div>
             <div className="form-group">
               <div className="col-xs-offset-2 col-xs-8">
-                <button type="submit" className="btn pull-left button-color btn-primary">Create Account</button>
+                <button onClick={this.props.flip} type="submit" className="btn pull-left button-color btn-primary">Create Account</button>
                 <button onClick={this.props.flip} type="button" className="btn button-color pull-right btn-primary">Back To Login</button>
                 <audio className="coin-flip" src="" autoPlay></audio>
               </div>

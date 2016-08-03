@@ -7,18 +7,18 @@ var PointerFieldModel = Backbone.Model.extend({
   }
 });
 
-var Actual = PointerFieldModel.extend({
+var GoalProgress = PointerFieldModel.extend({
   idAttribute: "objectId",
-  urlRoot: 'https://av-awesome-server.herokuapp.com/classes/actual',
+  urlRoot: 'https://av-awesome-server.herokuapp.com/classes/goalprogress',
 });
 
-var ActualCollection = Backbone.Collection.extend({
-  model: Actual,
+var GoalProgressCollection = Backbone.Collection.extend({
+  model: GoalProgress,
   parse: function(serverResponse){
     return serverResponse.results;
   },
   url: function(){
-    var url = 'https://av-awesome-server.herokuapp.com/classes/actual';
+    var url = 'https://av-awesome-server.herokuapp.com/classes/goalprogress';
     if(this.whereClause){
       return url + this.whereClause;
     }else{
@@ -32,6 +32,6 @@ var ActualCollection = Backbone.Collection.extend({
 });
 
 module.exports = {
-  'Actual': Actual,
-  'ActualCollection': ActualCollection
+  'GoalProgress': GoalProgress,
+  'GoalProgressCollection': GoalProgressCollection
 }

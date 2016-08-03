@@ -2,7 +2,75 @@ var React = require('react');
 
 var Actual = require('../models/actual').Actual;
 var ActualCollection = require('../models/actual').ActualCollection;
+var GoalProgress = require('../models/goalprogress').GoalProgress;
+var GoalCollection = require('../models/goals').GoalCollection;
+// var DisplayGoalComponent = require('./creategoal.jsx').DisplayGoalComponent;
 
+
+var GoalInputComponent = React.createClass({
+  componentWillMount: function(){
+    var self = this;
+    this.props.goalCollection.fetch().done(function(){
+      self.forceUpdate();
+    });
+  },
+
+  handleType: function(e){
+    this.props.goalProgress.set('name', e.target.value);
+  },
+
+  handleAmount: function(e){
+    this.props.goalProgress.set('amount', parseFloat(e.target.value));
+  },
+
+  handleSubmit: function(e){
+    e.preventDefault();
+    var user = JSON.parse(localStorage.getItem('user'));
+    console.log(user);
+    this.props.goalProgress.setPointer('user', user, '_User');
+    //console.log(this.props.goalProgress);
+    this.props.goalProgress.save();
+    this.clearForm();
+  },
+
+  clearForm: function(){
+    jQuery('.goal-progress-input').val('');
+    jQuery('.goal-progress-box').val('');
+  },
+
+  render: function(){
+    var goals = this.props.goalCollection;
+    var goalItem = goals.map(function(goal, index){
+      console.log(goal);
+      return (
+        <option key={index}>{goal.get('name')}</option>
+      )
+    });
+    //console.log(goals);
+    return (
+      <div className="row">
+        <form onSubmit={this.handleSubmit} className="col-md-4 well col-xs-12">
+            <h2 className="goal-progress-title well">Goal Contribution</h2>
+            <div className="goals-input col-md-8 col-xs-8">
+              <select onChange={this.handleType} className="goal-progress-input form-control">
+                <option className="default">Please Choose</option>
+                {goalItem}
+              </select>
+            </div>
+            <div className="goals-input col-md-4 col-xs-4">
+              <input onChange={this.handleAmount} type="number" className="goal-progress-box" min="0.01" step="0.01" placeholder="Expense"/>
+            </div>
+          <div className="row">
+            <div className="add-view-buttons col-xs-12">
+              <button type="submit" className="pull-left btn btn-success">Add Progress</button>
+              <a href="#creategoal/" className="pull-right view-button btn btn-primary">View Goals</a>
+            </div>
+          </div>
+        </form>
+      </div>
+    )
+  }
+});
 
 var ActualInputComponent = React.createClass({
   handleType: function(e){
@@ -28,7 +96,7 @@ var ActualInputComponent = React.createClass({
   },
 
   clearForm: function(){
-    jQuery('.actual-expense-input').val('default');
+    jQuery('.actual-expense-input').val('');
     jQuery('.actual-expense-box').val('');
     jQuery('.actual-note').val('');
   },
@@ -78,12 +146,9 @@ var ActualInputComponent = React.createClass({
 });
 
 var ProfileDisplayComponent = React.createClass({
-  handleSignOut: function(e){
-    e.preventDefault();
-    //var self = this;
-    window.localStorage.removeItem("user"),
-    window.localStorage.removeItem("username"),
-    this.props.router.navigate('login/', {trigger: true})
+  handleSignOut: function(){
+    localStorage.clear();
+    //self.props.router.navigate('login/', {trigger: true})
   },
 
   render: function(){
@@ -92,7 +157,7 @@ var ProfileDisplayComponent = React.createClass({
         <div className="profile-display col-xs-12">
           <div className="profile-display-heading">
             <h1 className="main-page-heading">{localStorage.getItem('username')}</h1>
-            <a href="#" onClick={this.handleSignOut} className="main-page-sign-out"><span>Sign Out</span></a>
+            <a href="#login/" className="main-page-sign-out"><span onClick={this.handleSignOut}>Sign Out</span></a>
           </div>
         </div>
       </div>
@@ -184,7 +249,9 @@ var NavComponent = React.createClass({
 var MainComponent = React.createClass({
   getInitialState: function(){
       return {
-        actual: new Actual()
+        actual: new Actual(),
+        goalProgress: new GoalProgress(),
+        goals: new GoalCollection()
       }
   },
 
@@ -192,6 +259,7 @@ var MainComponent = React.createClass({
     return (
       <NavComponent router={this.props.router}>
         <ActualInputComponent actualExpense={this.state.actual}/>
+        <GoalInputComponent goalCollection={this.state.goals} goalProgress={this.state.goalProgress}/>
       </NavComponent>
     )
   }

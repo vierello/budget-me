@@ -9,15 +9,6 @@ var PointerFieldModel = Backbone.Model.extend({
 var Goal = PointerFieldModel.extend({
   idAttribute: 'objectId',
   urlRoot: 'https://av-awesome-server.herokuapp.com/classes/goals',
-  defaults: {
-    'name': '',
-    'amount': '',
-    'startDate': '',
-    'endDate': ''
-  },
-  parse: function(data){
-    return data.results
-  },
 });
 
 var GoalCollection = Backbone.Collection.extend({
