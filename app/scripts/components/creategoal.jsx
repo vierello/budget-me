@@ -2,7 +2,6 @@ var React = require('react');
 
 var NavComponent = require('./main.jsx').NavComponent;
 var Goal = require('../models/goals').Goal;
-var GoalCollection = require('../models/goals').GoalCollection;
 var DisplayGoalComponent = require('./displaygoal.jsx').DisplayGoalComponent;
 
 

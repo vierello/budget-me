@@ -18,6 +18,7 @@ var ActualListComponent = React.createClass({
     actualCollection.fetch().done(function(){
       //console.log(actualCollection);
       self.setState({actualCollection: actualCollection});
+      self.forceUpdate();
     });
     //console.log(this.state.actual);
   },
@@ -25,9 +26,9 @@ var ActualListComponent = React.createClass({
   render: function(){
     var self = this;
     var actualCollection = this.state.actualCollection;
-    //console.log(actualCollection);
+    console.log(actualCollection);
     var actual = actualCollection.map(function(actualItem, index){
-      //console.log(actualItem.get('type'));
+      console.log(actualItem.get('amount'));
       return (
         <tr key={index} className="actual-list">
           <td>{actualItem.get('createdAt').slice(0, 10)}</td>

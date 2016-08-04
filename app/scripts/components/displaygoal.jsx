@@ -2,7 +2,6 @@ var React = require('react');
 var accounting = require('../accounting/accounting.min.js').accounting;
 
 var NavComponent = require('./main.jsx').NavComponent;
-var Goal = require('../models/goals').Goal;
 var GoalCollection = require('../models/goals').GoalCollection;
 var GoalProgressCollection = require('../models/goalprogress').GoalProgressCollection;
 var router = require('../router');
@@ -65,12 +64,12 @@ var DisplayGoalComponent = React.createClass({
                 <div className="time-goal-text">{(timeElapsed * 100).toFixed(0)}/{totalDays + ' '}days</div>
               </div>
               )
-          }else{
+          } else{
             return (
               <div>Your goal has ended</div>
             )
           }
-        }else{
+        } else{
           return (
             <div>This goal timer will begin in{' ' + (((startDateUTC - todayUTC) / millisecondsPerDay).toFixed(0)) + ' '}days</div>
           )
@@ -85,7 +84,7 @@ var DisplayGoalComponent = React.createClass({
 
         var goalAmountPortion = (goalProgressList / goal.get('amount')) * 100;
         //console.log(goalAmountPortion);
-        if(goalAmountPortion < 100){
+        if(goalAmountPortion < 100 &&  goalAmountPortion > 1){
           var styles = {
             width: goalAmountPortion + '%',
             minWidth: '2px'
@@ -96,29 +95,16 @@ var DisplayGoalComponent = React.createClass({
               <div className="amount-goal-text">${goalProgressList}/${goal.get('amount')}</div>
             </div>
           )
-        }else{
-          return (
-            <div>Your goal has been reached</div>
-          )
+        } else if(goalAmountPortion < 1){
+            return (
+              <div>This goal is not yet fundable!</div>
+            )
+        } else {
+            return (
+              <div>Your goal has been reached</div>
+            )
         }
       }
-
-      /*
-        <div className="row" key={index}>
-          <div className="col-md-offset-1 col-md-10 col-xs-12 well">
-            <div className="row">
-              <div className="goal-row col-xs-12">
-                <div className="goal-display-title-bar">
-                  <h3 className="well goal-display-title">{goal.get('name')}</h3>
-                  <p className="pull-right">Goal: {accounting.formatMoney(goal.get('amount'))}</p>
-                </div>
-              </div>
-            </div>
-            <div>{goalTimeBar()}</div>
-            <div>{amountBar()}</div>
-          </div>
-        </div>
-        */
 
       return (
         <div key={index}>

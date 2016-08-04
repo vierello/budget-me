@@ -1,7 +1,7 @@
 var React = require('react');
 
 var Actual = require('../models/actual').Actual;
-var ActualCollection = require('../models/actual').ActualCollection;
+//var ActualCollection = require('../models/actual').ActualCollection;
 var GoalProgress = require('../models/goalprogress').GoalProgress;
 var GoalCollection = require('../models/goals').GoalCollection;
 var User = require('../models/users').User;
@@ -10,6 +10,13 @@ var DisplayGoalComponent = require('./displaygoal.jsx').DisplayGoalComponent;
 
 
 var GoalInputComponent = React.createClass({
+  getInitialState: function (){
+    return {
+      'name': '',
+      'amount': 0
+    }
+  },
+
   componentWillMount: function(){
     var self = this;
     this.props.goalCollection.fetch().done(function(){
@@ -18,26 +25,30 @@ var GoalInputComponent = React.createClass({
   },
 
   handleType: function(e){
-    this.props.goalProgress.set('name', e.target.value);
+    this.setState({'name': e.target.value});
   },
 
   handleAmount: function(e){
-    this.props.goalProgress.set('amount', parseFloat(e.target.value));
+    this.setState({'amount': parseFloat(e.target.value)});
   },
 
   handleSubmit: function(e){
     e.preventDefault();
+    var self = this;
+    var goalProgress = new GoalProgress();
     var user = JSON.parse(localStorage.getItem('user'));
     //console.log(user);
-    this.props.goalProgress.setPointer('user', user, '_User');
+    goalProgress.set('name', this.state.name);
+    goalProgress.set('amount', this.state.amount)
+    goalProgress.setPointer('user', user, '_User');
     //console.log(this.props.goalProgress);
-    this.props.goalProgress.save();
-    this.clearForm();
-  },
-
-  clearForm: function(){
-    jQuery('.goal-progress-input').val('');
-    jQuery('.goal-progress-box').val('');
+    goalProgress.save().done(function(){
+      self.setState({
+        'name': '',
+        'amount': ''
+      });
+      self.forceUpdate();
+    });
   },
 
   render: function(){
@@ -54,13 +65,13 @@ var GoalInputComponent = React.createClass({
         <form onSubmit={this.handleSubmit} className="col-md-12 well col-xs-12">
             <h2 className="goal-progress-title well">Goal Contribution</h2>
             <div className="goals-input col-md-8 col-xs-8">
-              <select onChange={this.handleType} className="goal-progress-input form-control">
+              <select onChange={this.handleType} className="goal-progress-input form-control" value={this.state.name}>
                 <option className="default">Please Choose</option>
                 {goalItem}
               </select>
             </div>
             <div className="goals-input col-md-4 col-xs-4">
-              <input onChange={this.handleAmount} type="number" className="goal-progress-box" min="0.01" step="0.01" placeholder="Expense"/>
+              <input onChange={this.handleAmount} type="number" className="goal-progress-box" min="0.01" step="0.01" placeholder="Expense" value={this.state.amount}/>
             </div>
           <div className="row">
             <div className="add-view-buttons col-xs-12">
@@ -75,32 +86,44 @@ var GoalInputComponent = React.createClass({
 });
 
 var ActualInputComponent = React.createClass({
+  getInitialState: function() {
+    return {
+      'type': "",
+      'amount': 0,
+      'description': ""
+    }
+  },
   handleType: function(e){
-    this.props.actualExpense.set('type', e.target.value);
+    this.setState({'type': e.target.value});
   },
 
   handleAmount: function(e){
-    this.props.actualExpense.set('amount', parseFloat(e.target.value));
+    this.setState({'amount': parseFloat(e.target.value)});
   },
 
   handleDescription: function(e){
-    this.props.actualExpense.set('description', e.target.value);
+    this.setState({'description': e.target.value});
   },
 
   handleSubmit: function(e){
     e.preventDefault();
+    var actualExpense = new Actual();
+    var self = this;
     var user = JSON.parse(localStorage.getItem('user'));
     //console.log(user);
-    this.props.actualExpense.setPointer('user', user, '_User');
-    //console.log(this.props.actualExpense);
-    this.props.actualExpense.save();
-    this.clearForm();
-  },
+    actualExpense.set('type', this.state.type);
+    actualExpense.set('amount', this.state.amount);
+    actualExpense.set('description', this.state.description);
+    actualExpense.setPointer('user', user, '_User');
+    actualExpense.save().done(function(){
+      self.setState({
+        'type': '',
+        'amount': '',
+        'description': ''
+      });
+      self.forceUpdate();
+    });
 
-  clearForm: function(){
-    jQuery('.actual-expense-input').val('');
-    jQuery('.actual-expense-box').val('');
-    jQuery('.actual-note').val('');
   },
 
   render: function(){
@@ -109,7 +132,7 @@ var ActualInputComponent = React.createClass({
         <form onSubmit={this.handleSubmit} className="col-md-12 well col-xs-12">
             <h2 className="actual-title well">Actual Expense</h2>
             <div className="actual-input col-md-8 col-xs-8">
-              <select onChange={this.handleType} className="actual-expense-input form-control">
+              <select onChange={this.handleType} className="actual-expense-input form-control" value={this.state.type}>
                 <option className="default">Please Choose</option>
                 <option>Mortgage/Rent</option>
                 <option>Health Insurance</option>
@@ -130,10 +153,10 @@ var ActualInputComponent = React.createClass({
               </select>
             </div>
             <div className="actual-input col-md-4 col-xs-4">
-              <input onChange={this.handleAmount} type="number" className="actual-expense-box" min="0.01" step="0.01" placeholder="Expense"/>
+              <input onChange={this.handleAmount} type="number" className="actual-expense-box" min="0.01" step="0.01" placeholder="Expense" value={this.state.amount}/>
             </div>
             <div>
-              <textarea onChange={this.handleDescription} type="text" className="actual-note col-xs-12" rows="2" placeholder="Describe Transaction"/>
+              <textarea onChange={this.handleDescription} type="text" className="actual-note col-xs-12" rows="2" placeholder="Describe Transaction" value={this.state.description}/>
             </div>
           <div className="row">
             <div className="add-view-buttons col-xs-12">
@@ -179,6 +202,7 @@ var NavComponent = React.createClass({
         <div className="row">
           <div className="col-xs-12">
             <div className="row main-row">
+              <div className="nav-blue-box"></div>
               <div className="nav-sidebar col-md-2 col-xs-12">
                 <header className="well nav-header">
                   <h1>Budget</h1>
@@ -256,8 +280,6 @@ var NavComponent = React.createClass({
 var MainComponent = React.createClass({
   getInitialState: function(){
       return {
-        actual: new Actual(),
-        goalProgress: new GoalProgress(),
         goals: new GoalCollection()
       }
   },
@@ -269,10 +291,10 @@ var MainComponent = React.createClass({
           <div className="col-md-offset-1 col-md-10 col-xs-12 dash-well-color well">
             <p className="dashboard-header"></p>
             <div className="col-md-5 col-xs-12">
-              <ActualInputComponent actualExpense={this.state.actual}/>
+              <ActualInputComponent/>
             </div>
             <div className=" col-md-offset-1 col-md-5 col-xs-12">
-              <GoalInputComponent goalCollection={this.state.goals} goalProgress={this.state.goalProgress}/>
+              <GoalInputComponent goalCollection={this.state.goals}/>
             </div>
           </div>
         </div>

@@ -1,7 +1,7 @@
 var React = require('react');
-var Backbone = require('backbone');
 
 var User = require('../models/users').User;
+
 
 var App = React.createClass({
     getInitialState: function() {

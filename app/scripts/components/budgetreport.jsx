@@ -5,9 +5,7 @@ var accounting = require('../accounting/accounting.min.js').accounting;
 var NavComponent = require('./main.jsx').NavComponent;
 var Budget = require('../models/budget').Budget;
 var BudgetCollection = require('../models/budget').BudgetCollection;
-var IncomeCollection = require('../models/income').IncomeCollection;
 var ActualCollection = require('../models/actual').ActualCollection;
-var Actual = require('../models/actual').Actual;
 
 
 var TotalIncomeComponent = React.createClass({
@@ -118,11 +116,11 @@ var BudgetReportComponent = React.createClass({
           return (
             <span className="budget-amount surplus col-xs-2">{accounting.formatMoney(income.amount - income.actual)}</span>
           )
-        }else if((income.amount - income.actual) < 0){
+        } else if((income.amount - income.actual) < 0){
           return(
             <span className="budget-amount deficit col-xs-2">{accounting.formatMoney(income.amount - income.actual)}</span>
           )
-        }else{
+        } else{
           return (
             <span className="budget-amount col-xs-2">{accounting.formatMoney(0)}</span>
             )
@@ -135,7 +133,7 @@ var BudgetReportComponent = React.createClass({
         <div className="row" key={income.type}>
           <span className="budget-amount col-xs-2">{income.type}</span>
           <span className="budget-amount col-xs-2">{accounting.formatMoney(income.amount)}</span>
-          <a href="#"><span className="budget-amount col-xs-2">{accounting.formatMoney(income.actual)}</span></a>
+          <span className="budget-amount col-xs-2">{accounting.formatMoney(income.actual)}</span>
           {incomeSurplusDeficit()}
         </div>
       )
@@ -147,11 +145,11 @@ var BudgetReportComponent = React.createClass({
           return (
             <span className="budget-amount surplus col-xs-2">{accounting.formatMoney(expense.amount - expense.actual)}</span>
           )
-        }else if((expense.amount - expense.actual) < 0){
+        } else if((expense.amount - expense.actual) < 0){
           return(
             <span className="budget-amount deficit col-xs-2">{accounting.formatMoney(expense.amount - expense.actual)}</span>
           )
-        }else{
+        } else{
           return(
           <span className="budget-amount col-xs-2">{accounting.formatMoney(0)}</span>
           )
@@ -161,7 +159,7 @@ var BudgetReportComponent = React.createClass({
         <div className="row" key={expense.type}>
           <span className="budget-amount col-xs-2">{expense.type}</span>
           <span className="budget-amount col-xs-2">{accounting.formatMoney(expense.amount)}</span>
-          <a href="#"><span className="budget-amount col-xs-2">{accounting.formatMoney(expense.actual)}</span></a>
+          <span className="budget-amount col-xs-2">{accounting.formatMoney(expense.actual)}</span>
           {expenseSurplusDeficit()}
         </div>
       )
