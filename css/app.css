@@ -6041,11 +6041,22 @@ hr {
   height: 100%;
   position: relative; }
 
+.nav-blue-box {
+  background-color: #09397A;
+  width: 16.66667%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0; }
+
 .nav-sidebar {
   background-color: #09397A;
   color: white;
   height: 100%;
-  position: relative; }
+  position: relative;
+  top: 0;
+  left: 0;
+  bottom: 0; }
 
 .main-page-layout {
   padding: 0; }
@@ -6271,12 +6282,15 @@ th {
   margin-top: 20px;
   font-size: 18px; }
 
-@media (min-width: 1300px) {
+@media (min-width: 751px), (max-width: 1269px) {
   .nav-header h1 {
-    font-size: 70px; } }
-@media (min-width: 750px) {
+    font-size: 30px; } }
+@media (min-width: 1270px), (max-width: 1660px) {
   .nav-header h1 {
     font-size: 50px; } }
+@media (min-width: 1661px) {
+  .nav-header h1 {
+    font-size: 70px; } }
 @media (max-width: 1400px) {
   .budget-report h4 {
     font-size: 15px; }
@@ -6295,5 +6309,8 @@ th {
 
   .goal-display-line {
     text-align: center; } }
+@media (max-width: 991px) {
+  .nav-blue-box {
+    display: none; } }
 
 /*# sourceMappingURL=app.css.map */
