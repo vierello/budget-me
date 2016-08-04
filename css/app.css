@@ -6170,6 +6170,12 @@ hr {
   width: 100%;
   border-radius: 5px; }
 
+.budget-report h4 {
+  font-size: 20px; }
+
+.budget-amount {
+  font-size: 14px; }
+
 .surplus {
   color: green; }
 
@@ -6214,14 +6220,17 @@ hr {
   height: 35px;
   margin-bottom: 5px;
   border-radius: 0;
-  border: 1px solid #E2E2E2; }
+  border: 1px solid #E2E2E2;
+  position: relative; }
 
 .time-goal-text {
   color: gray;
   font-size: 18px;
   text-align: center;
   line-height: 30px;
-  z-index: 100; }
+  z-index: 100;
+  position: absolute;
+  left: 42%; }
 
 .amount-progress {
   height: 35px;
@@ -6236,7 +6245,8 @@ hr {
   text-align: center;
   line-height: 30px;
   z-index: 100;
-  position: absolute; }
+  position: absolute;
+  left: 42%; }
 
 .profile-input {
   float: right;
@@ -6267,11 +6277,23 @@ th {
 @media (min-width: 750px) {
   .nav-header h1 {
     font-size: 50px; } }
+@media (max-width: 1400px) {
+  .budget-report h4 {
+    font-size: 15px; }
+
+  .budget-amount {
+    font-size: 11px; } }
 @media (max-width: 750px) {
   .app-header h1 {
     font-size: 80px; }
 
+  .goal-display-title-bar p {
+    float: left; }
+
   .create-goal-group {
-    display: inline-block; } }
+    display: inline-block; }
+
+  .goal-display-line {
+    text-align: center; } }
 
 /*# sourceMappingURL=app.css.map */
