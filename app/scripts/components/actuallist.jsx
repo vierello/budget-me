@@ -40,24 +40,26 @@ var ActualListComponent = React.createClass({
 
     return (
       <NavComponent>
-        <div className="row">
-          <table className="col-xs-12 col-md-offset-2 col-md-8">
-            <thead className="row">
-              <tr>
-                <th>Transaction Date</th>
-                <th>Transaction Type</th>
-                <th>Transaction Description</th>
-                <th>Transaction Amount</th>
-              </tr>
-            </thead>
-            <tbody className="row">
-              {actual}
-            </tbody>
-          </table>
-        </div>
-        <div className="row">
-          <div className="col-xs-12 col-md-offset-2 col-md-8">
-            <p className="return-home-button"><a href="#main/"><button className="btn btn-warning">Return Home</button></a></p>
+        <div className="well col-md-offset-1 col-md-10 col-xs-12">
+          <div className="row table-responsive">
+            <table className="col-xs-12 table">
+              <thead>
+                <tr>
+                  <th>Transaction Date</th>
+                  <th>Transaction Type</th>
+                  <th>Transaction Description</th>
+                  <th>Transaction Amount</th>
+                </tr>
+              </thead>
+              <tbody>
+                {actual}
+              </tbody>
+            </table>
+          </div>
+          <div className="row">
+            <div className="col-xs-12 col-md-offset-2 col-md-8">
+              <p className="return-home-button"><a href="#main/"><button className="btn btn-warning">Return Home</button></a></p>
+            </div>
           </div>
         </div>
       </NavComponent>

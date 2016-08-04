@@ -278,11 +278,11 @@ var MainComponent = React.createClass({
         </div>
         <div className="row">
           <div className="col-md-offset-1 col-md-10 col-xs-12 dashboard-padding">
-            <div className="col-md-6 col-sm-12 col-xs-12 dash-well-color well">
+            <div className="col-md-7 col-sm-12 col-xs-12 dash-well-color well">
               <p className="dashboard-header">Budget Report</p>
               <BudgetReportComponent/>
             </div>
-            <div className="col-md-6 col-sm-12 col-xs-12 dash-well-color well">
+            <div className="col-md-5 col-sm-12 col-xs-12 dash-well-color well">
               <p className="dashboard-header">Goals</p>
               <DisplayGoalComponent/>
             </div>

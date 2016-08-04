@@ -102,7 +102,8 @@ var DisplayGoalComponent = React.createClass({
           )
         }
       }
-      return (
+
+      /*
         <div className="row" key={index}>
           <div className="col-md-offset-1 col-md-10 col-xs-12 well">
             <div className="row">
@@ -113,6 +114,22 @@ var DisplayGoalComponent = React.createClass({
                 </div>
               </div>
             </div>
+            <div>{goalTimeBar()}</div>
+            <div>{amountBar()}</div>
+          </div>
+        </div>
+        */
+
+      return (
+        <div key={index}>
+          <div className="col-md-offset-1 col-md-10 col-xs-12 well">
+              <div className="goal-row col-xs-12">
+                <div className="goal-display-title-bar">
+                  <h3 className="well goal-display-title">{goal.get('name')}</h3>
+                  <p className="goal-display-line pull-right">Goal: {accounting.formatMoney(goal.get('amount'))}</p>
+                </div>
+              </div>
+
             <div>{goalTimeBar()}</div>
             <div>{amountBar()}</div>
           </div>
