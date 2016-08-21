@@ -27,8 +27,8 @@ var Router = Backbone.Router.extend({
     'profile/': 'profile'
   },
 
-  initialize: function(){
-    if(User.isLoggedIn()){
+  initialize: function() {
+    if (User.isLoggedIn()) {
       var currentUser = User.restore();
     }
   },
@@ -37,7 +37,7 @@ var Router = Backbone.Router.extend({
     ReactDOM.render(
       React.createElement(App, {router: this}),
       document.getElementById('container')
-    )
+    );
     jQuery('#container').addClass('wrapper-login');
     jQuery('#container').removeClass('wrapper-main');
   },
@@ -46,7 +46,7 @@ var Router = Backbone.Router.extend({
     ReactDOM.render(
       React.createElement(SignupComponent, {router: this}),
       document.getElementById('container')
-    )
+    );
     jQuery('#container').addClass('wrapper-login');
     jQuery('#container').removeClass('wrapper-main');
   },
@@ -55,7 +55,7 @@ var Router = Backbone.Router.extend({
     ReactDOM.render(
       React.createElement(MainComponent, {router: this}),
       document.getElementById('container')
-    )
+    );
     jQuery('#container').addClass('wrapper-main');
     jQuery('#container').removeClass('wrapper-login');
   },
@@ -64,7 +64,7 @@ var Router = Backbone.Router.extend({
     ReactDOM.render(
       React.createElement(CreateBudgetComponent, {router: this}),
       document.getElementById('container')
-    )
+    );
     jQuery('#container').addClass('wrapper-main');
     jQuery('#container').removeClass('wrapper-login');
   },
@@ -73,7 +73,7 @@ var Router = Backbone.Router.extend({
     ReactDOM.render(
       React.createElement(BudgetReportDisplayComponent, {router: this}),
       document.getElementById('container')
-    )
+    );
     jQuery('#container').addClass('wrapper-main');
     jQuery('#container').removeClass('wrapper-login');
   },
@@ -82,7 +82,7 @@ var Router = Backbone.Router.extend({
     ReactDOM.render(
       React.createElement(CreateGoalComponent, {router: this}),
       document.getElementById('container')
-    )
+    );
     jQuery('#container').addClass('wrapper-main');
     jQuery('#container').removeClass('wrapper-login');
   },
@@ -91,7 +91,7 @@ var Router = Backbone.Router.extend({
     ReactDOM.render(
       React.createElement(ActualListComponent, {router: this}),
       document.getElementById('container')
-    )
+    );
     jQuery('#container').addClass('wrapper-main');
     jQuery('#container').removeClass('wrapper-login');
   },
@@ -100,7 +100,7 @@ var Router = Backbone.Router.extend({
     ReactDOM.render(
       React.createElement(ProfileComponent, {router: this}),
       document.getElementById('container')
-    )
+    );
     jQuery('#container').addClass('wrapper-main');
     jQuery('#container').removeClass('wrapper-login');
   }
