@@ -10,10 +10,10 @@ var User = Backbone.Model.extend({
     //console.log(data.password);
     delete data.createdAt;
     delete data.updatedAt;
-    return data
+    return data;
   }
 },
-{
+  {
   login: function(username, password, callbacks){
     var self = this;
     var loggedInUser = new User();
@@ -34,9 +34,9 @@ var User = Backbone.Model.extend({
   _setAuthHeaders: function(sessionToken){
     jQuery.ajaxSetup({
       beforeSend: function(xhr){
-        xhr.setRequestHeader("X-Parse-Application-Id", "bakklam");
-        xhr.setRequestHeader("X-Parse-REST-API-Key", "bakklamkey");
-        xhr.setRequestHeader("X-Parse-Session-Token", sessionToken);
+        xhr.setRequestHeader('X-Parse-Application-Id', 'bakklam');
+        xhr.setRequestHeader('X-Parse-REST-API-Key', 'bakklamkey');
+        xhr.setRequestHeader('X-Parse-Session-Token', sessionToken);
       }
     });
   },

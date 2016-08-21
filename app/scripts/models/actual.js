@@ -8,7 +8,7 @@ var PointerFieldModel = Backbone.Model.extend({
 });
 
 var Actual = PointerFieldModel.extend({
-  idAttribute: "objectId",
+  idAttribute: 'objectId',
   urlRoot: 'https://av-awesome-server.herokuapp.com/classes/actual',
 });
 
@@ -19,9 +19,9 @@ var ActualCollection = Backbone.Collection.extend({
   },
   url: function(){
     var url = 'https://av-awesome-server.herokuapp.com/classes/actual';
-    if(this.whereClause){
+    if (this.whereClause){
       return url + this.whereClause;
-    }else{
+    } else {
       return url;
     }
   },
@@ -34,4 +34,4 @@ var ActualCollection = Backbone.Collection.extend({
 module.exports = {
   'Actual': Actual,
   'ActualCollection': ActualCollection
-}
+};

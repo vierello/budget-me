@@ -8,7 +8,7 @@ var PointerFieldModel = Backbone.Model.extend({
 });
 
 var GoalProgress = PointerFieldModel.extend({
-  idAttribute: "objectId",
+  idAttribute: 'objectId',
   urlRoot: 'https://av-awesome-server.herokuapp.com/classes/goalprogress',
 });
 
@@ -19,9 +19,9 @@ var GoalProgressCollection = Backbone.Collection.extend({
   },
   url: function(){
     var url = 'https://av-awesome-server.herokuapp.com/classes/goalprogress';
-    if(this.whereClause){
+    if (this.whereClause){
       return url + this.whereClause;
-    }else{
+    } else {
       return url;
     }
   },
@@ -34,4 +34,4 @@ var GoalProgressCollection = Backbone.Collection.extend({
 module.exports = {
   'GoalProgress': GoalProgress,
   'GoalProgressCollection': GoalProgressCollection
-}
+};

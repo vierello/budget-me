@@ -18,10 +18,10 @@ var File = Backbone.Model.extend({
     options.processData = false;
     options.contentType = false;
     options.beforeSend = function(request){
-      request.setRequestHeader("X-Parse-Application-Id", "bakklam");
-      request.setRequestHeader("X-Parse-REST-API-Key", "bakklamkey");
-      request.setRequestHeader("Content-Type", image.type);
-    }
+      request.setRequestHeader('X-Parse-Application-Id', 'bakklam');
+      request.setRequestHeader('X-Parse-REST-API-Key', 'bakklamkey');
+      request.setRequestHeader('Content-Type', image.type);
+    };
 
     return Backbone.Model.prototype.save.call(this, attributes, options);
   }
