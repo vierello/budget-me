@@ -12,6 +12,36 @@ I decided to build a budgeting app as I was a tax accountant for 15 years before
 
 This application allows users to:
 
-  *create an account.
-  *log in to their account
-  *create a profile along with an uploaded profile image 
+User Login:
+
+  * Create an account.
+  * Log into their account.
+  * Create a profile along with an uploaded profile image.
+
+Budget Creation:
+
+  * Create a budget.
+  * Add actual expenses.
+  * View the surplus or deficit in each budgeted expense category.
+  * View the overall budget report.
+
+Added Features:
+
+  * Create goals such as a vacation savings goal or paying off a credit card.
+  * Add whatever is saved to the goal.
+  * View the goal savings progress bar compared to the set end date of the goal.
+
+To build this application I used most of the technologies learned throughout my time at the Iron Yard, including:
+
+  * Javascript
+  * jQuery
+  * Bootstrap
+  * Backbone
+  * React
+  * HTML
+  * CSS
+  * SASS
+  * Parse
+  * Heroku
+  * Yeoman
+  * NPM
